@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-// const routes = require("./routes");
+const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -9,15 +9,16 @@ const PORT = process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // serve up static assets
-app.use(express.static("client/build"));
+app.use(express.static("client"));
+
 // add routes
-// app.use(routes);
+app.use(routes);
 
 // set up promises with mongoose
 mongoose.Promise = global.Promise;
 // connect to MongoDB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/nytreact"
+  process.env.MONGODB_URI || "mongodb://localhost/treatYoSelf"
 );
 
 // start the API server
