@@ -1,7 +1,7 @@
 const express = require('express');
 const validator = require('validator');
 const passport = require('passport');
-const Account = require('../../models/account');
+// const Account = require('../../models/account');
 
 const router = require("express").Router();
 
