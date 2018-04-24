@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const passport = require('passport');
 const app = express();
-const passport = require('passport');
 const PORT = process.env.PORT || 3001;
 
 // use body parser
