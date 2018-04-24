@@ -10,9 +10,13 @@ mongoose.connect(
 
 const trackSeed = [
   {
-    other: 'test note 1',
+    title: "journal title 1",
+    entry: "journal entry 1",
+    other: 'test note 1'
    },
   {
+    title: "journal title 2",
+    entry: "journal entry 2",
     other: 'test note 2'
   }
 ];
