@@ -11,10 +11,12 @@ const trackSchema = new Schema({
         trim: true,
         required: true
     },
-    other: {
-        type: String,
-        unique: true,
-        required: true
+    date: {
+        type: Date,
+        default: Date.now()
+    },
+    score: {
+        type: Number
     }
 });
 
