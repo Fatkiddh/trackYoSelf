@@ -40,10 +40,10 @@ module.exports = new PassportLocalStrategy({
         sub: user._id
       };
 
-      console.log(config.jwtSecret);
+      console.log(config.userTokenCheck);
 
       // create a token string
-      const token = jwt.sign(payload, config.jwtSecret);
+      const token = userTokenCheck.sign(payload, config.userTokenCheck);
       const data = {
         businessName: user.businessName
       };
