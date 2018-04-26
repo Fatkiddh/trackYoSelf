@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const db = require("../models");
 mongoose.Promise = global.Promise;
 
-// This file empties the Notes collection and inserts the notes below
+// This file empties the Tracks collection and inserts the tracks below
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/treatYoSelf"
