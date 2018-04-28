@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../components/Modal';
+import SignUpForm from '../components/SignUpForm';
 import {Parallax, Footer, Row, Col, Icon} from 'react-materialize';
 
 const Launch = () =>
@@ -13,7 +13,7 @@ const Launch = () =>
           <h5 className="header col s12 light">A journal to track your mood.</h5>
         </Row>
         <Row className="center">
-          <Modal/>
+          <SignUpForm header="Sign Up" title="Get Started" />
         </Row>
         <br/><br/>
       </div>
