@@ -23,14 +23,14 @@ export default {
   },
   // Sign up a user
   signUp: function(userData) {
-    return axios.post('/api/account', userData);
+    return axios.post('/account', userData);
   },
   // Authenticates a user
   authenticateUser: function(userData) {
-    return axios.post('/auth/login', userData);
+    return axios.post('/login', userData);
   },
 
   getUserAccount: function() {
-   return axios.get('/auth/account');
+   return axios.get('/account');
  }
 };

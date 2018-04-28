@@ -2,7 +2,6 @@ const express = require('express');
 const validator = require('validator');
 const passport = require('passport');
 const Account = require('../../models/account');
-
 const router = require("express").Router();
 
 /**
@@ -16,6 +15,7 @@ function validateSignupForm(payload) {
   const errors = {};
   let isFormValid = true;
   let message = '';
+  
 
   if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
     isFormValid = false;
@@ -27,9 +27,9 @@ function validateSignupForm(payload) {
     errors.password = 'Password must have at least 8 characters.';
   }
 
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
+  if (!payload || typeof payload.username !== 'string' || payload.username.trim().length === 0) {
     isFormValid = false;
-    errors.name = 'Please provide your name.';
+    errors.username = 'Please provide a username.';
   }
 
 
@@ -78,7 +78,7 @@ function validateLoginForm(payload) {
 };
 
 router.post('/account', (req, res, next) => {
-  const validationResult = validateSignupForm(req.body);
+  const validationResult = validateSignupForm(req.body);  
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -86,7 +86,6 @@ router.post('/account', (req, res, next) => {
       errors: validationResult.errors
     });
   }
-
 
   return passport.authenticate('local-signup', (err) => {
     if (err) {

@@ -8,7 +8,7 @@ import Auth from './../utils/Auth';
 class SignUpForm extends Component {
 
   state = {
-    userName: "",
+    username: "",
     email: "",
     password: "",
     errorMessage: null,
@@ -34,7 +34,7 @@ class SignUpForm extends Component {
 
  signUp = () => {
     const userData = {
-      userName: this.state.userName,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     };
@@ -68,7 +68,7 @@ class SignUpForm extends Component {
     //   lastName: "",
     // });
     if (
-     this.state.userName &&
+     this.state.username &&
      // this.state.phoneNumber &&
      this.state.email &&
      this.state.password
@@ -85,6 +85,7 @@ class SignUpForm extends Component {
 
   render() {
     return(
+
       <Modal header={this.props.header} fixedFooter trigger={<Button><Link to="/signup">{this.props.title}</Link></Button>} actions={<Button onClick={this.handleFormSubmit}>Create Account</Button>}>
         <form>
           <Row>
