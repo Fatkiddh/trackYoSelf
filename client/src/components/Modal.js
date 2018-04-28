@@ -7,7 +7,7 @@ import Auth from './../utils/Auth';
 class SignUpForm extends Component {
 
   state = {
-    userName: "",
+    username: "",
     email: "",
     password: "",
     errorMessage: null,
@@ -33,7 +33,7 @@ class SignUpForm extends Component {
 
  signUp = () => {
     const userData = {
-      userName: this.state.userName,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     };
@@ -67,7 +67,7 @@ class SignUpForm extends Component {
     //   lastName: "",
     // });
     if (
-     this.state.userName &&
+     this.state.username &&
      // this.state.phoneNumber &&
      this.state.email &&
      this.state.password
@@ -88,8 +88,8 @@ class SignUpForm extends Component {
         <Row>
 
           <Input s={12} label="Username"
-          value={this.state.userName}
-          name="userName"
+          value={this.state.username}
+          name="username"
           onChange={this.handleInputChange}
           type="text"
           />

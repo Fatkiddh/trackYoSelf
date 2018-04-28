@@ -11,15 +11,14 @@ module.exports = new PassportLocalStrategy({
   passReqToCallback: true
 }, (req, email, password, done) => {
   const userData = {
+    username: email.trim(),
     email: email.trim(),
     password: password.trim(),
   };
 
-
   const newAccount = new db.Account(userData);
   newAccount.save((err) => {
     if (err) { return done(err); }
-
     return done(null);
   });
 });
