@@ -12,9 +12,6 @@ app.use(bodyParser.json());
 // serve up static assets
 app.use(express.static("client"));
 
-
-// add routes
-app.use(routes);
 app.use(passport.initialize());
 
 // load passport strategies
@@ -26,6 +23,9 @@ passport.use('local-login', localLoginStrategy);
 // pass the authentication checker middleware
 const authCheckMiddleware = require('./middleware/auth-check');
 app.use('/api', authCheckMiddleware);
+
+// add routes
+app.use(routes);
 
 // set up promises with mongoose
 mongoose.Promise = global.Promise;
