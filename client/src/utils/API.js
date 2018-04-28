@@ -18,9 +18,12 @@ export default {
   saveNote: function(noteData) {
     return axios.post("/api/notes", noteData);
   },
+  saveSignup: function(accountData) {
+    return axios.post('/api/signup', accountData);
+  },
   // Sign up a user
   signUp: function(userData) {
-    return axios.post('/auth/signup', userData);
+    return axios.post('/api/account', userData);
   },
   // Authenticates a user
   authenticateUser: function(userData) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 // import {Navbar, NavItem} from 'react-materialize';
 // import NewNote from './NewNote';
 const ulStyle= {
@@ -12,30 +13,30 @@ const Navbar = (props) =>
     {props.loggedin ? (
       <ul style={ulStyle}>
         <li>
-          <a href="/">New Entry</a>
+          <Link to="/">New Entry</Link>
         </li>
         <li>
-          <a href="/history">History</a>
+          <Link href="/history">History</Link>
         </li>
         <li>
-          <a href="/tags">Tags</a>
+          <Link href="/tags">Tags</Link>
         </li>
         <ul className="right">
           <li>
-            <a href="/account">Account</a>
+            <Link href="/account">Account</Link>
           </li>
           <li>
-            <a href="/logout">Log Out</a>
+            <Link to="/logout">Log Out</Link>
           </li>
         </ul>
       </ul>
     ): (
     <ul className="right">
       <li>
-        <a href="/login" className="grey-text text-lighten-5">Log In</a>
+        <Link to="/login" className="grey-text text-lighten-5">Log In</Link>
       </li>
       <li>
-        <a href="/signup" className="grey-text text-lighten-5">Sign Up</a>
+        <Link to="/signup" className="grey-text text-lighten-5">Sign Up</Link>
       </li>
     </ul>
     )}
