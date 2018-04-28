@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {Modal, Button, Row, Input} from 'react-materialize';
 import API from './../utils/API';
 import Auth from './../utils/Auth';
@@ -84,28 +85,29 @@ class SignUpForm extends Component {
 
   render() {
     return(
-      <Modal header="Sign Up" fixedFooter trigger={<Button>Get Started</Button>} actions={<Button onClick={this.handleFormSubmit}>Create Account</Button>}>
-        <Row>
+      <Modal header={this.props.header} fixedFooter trigger={<Button><Link to="/signup">{this.props.title}</Link></Button>} actions={<Button onClick={this.handleFormSubmit}>Create Account</Button>}>
+        <form>
+          <Row>
+            <Input s={12} label="Username"
+            value={this.state.userName}
+            name="userName"
+            onChange={this.handleInputChange}
+            type="text"
+            />
 
-          <Input s={12} label="Username"
-          value={this.state.userName}
-          name="userName"
-          onChange={this.handleInputChange}
-          type="text"
-          />
+            <Input type="email" label="Email" s={12}
+            value={this.state.email}
+            name="email"
+            onChange={this.handleInputChange}
+            />
 
-          <Input type="email" label="Email" s={12}
-          value={this.state.email}
-          name="email"
-          onChange={this.handleInputChange}
-          />
-
-          <Input type="password" label="Password" s={12}
-          value={this.state.password}
-          name="password"
-          onChange={this.handleInputChange}
-          />
-        </Row>
+            <Input type="password" label="Password" s={12}
+            value={this.state.password}
+            name="password"
+            onChange={this.handleInputChange}
+            />
+          </Row>
+        </form>
       </Modal>
     );
   }
