@@ -27,7 +27,8 @@ class RecentTrack extends React.Component {
           <CollapsibleItem header={track.title} icon='filter_drama'>
             {track.entry}
           </CollapsibleItem>
-        ))}
+          )
+        )}
       </Collapsible>
     )
   }
