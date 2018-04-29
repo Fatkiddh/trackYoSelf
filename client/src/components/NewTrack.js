@@ -1,5 +1,5 @@
-import React, { Component }  from 'react';
-import { Tag } from 'react-materialize';
+import React, { Component } from 'react';
+import { Row, Input } from 'react-materialize';
 import API from './../utils/API';
 
 class NewTrack extends Component {
@@ -9,7 +9,8 @@ class NewTrack extends Component {
     date: "",
     score: 0,
     account: "",
-    errorMessage: null
+    errorMessage: null,
+    tags: ["Personal", "Work", "Fitness"]
   };
 
   newTrack = () => {
@@ -18,7 +19,7 @@ class NewTrack extends Component {
       entry: this.state.entry,
       date: this.state.date,
       score: this.state.score,
-      account: this.state.account
+      account: this.state.account,
     };
 
     API.saveTrack(trackData)
@@ -32,29 +33,28 @@ class NewTrack extends Component {
   render() {
     return (
       <form>
-        <div className="row">
+        <Row>
           <div className="col s12">
             <input placeholder="Track Title" id="title" />
             <input name='on' type='date' onChange={function (e, value) { }} />
           </div>
-        </div>
+        </Row>
 
-        <div className="row">
+        <Row>
           <div className="input-field col s12">
             <textarea id="body" className="materialize-textarea"></textarea>
             <label type="textarea">"How are you feeling today?"</label>
           </div>
-        </div>
+        </Row>
 
-        <div className="row">
-          <div className="col s12">
-            <Tag>Tag</Tag>
-            <Tag>Tag 2</Tag>
-          </div>
-        </div>
-
+        <Row>
+          <Input name='group1' type='checkbox' value='red' label='Red' />
+          <Input name='group1' type='checkbox' value='yellow' label='Yellow' defaultValue='checked' />
+          <Input name='group1' type='checkbox' value='green' label='Green' />
+          <Input name='group1' type='checkbox' value='brown' label='Brown' />
+        </Row>
       </form>
-     )
+    )
   }
 
 }
