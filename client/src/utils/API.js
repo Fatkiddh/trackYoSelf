@@ -1,26 +1,31 @@
 import axios from "axios";
 
 export default {
-  // Gets all notes
-  getNotes: function() {
-    return axios.get("/api/notes");
+  // Gets all tracks
+  getTracks: function() {
+    return axios.get("/api");
   },
-  // Gets the note with the given id
-  // might not need this
-  getNote: function(id) {
-    return axios.get("/api/notes/" + id);
+  // Gets the track with the given id
+  getTrack: function(id) {
+    return axios.get("/api/" + id);
   },
-  // Deletes the note with the given id
-  deleteNote: function(id) {
-    return axios.delete("/api/notes/" + id);
+  // Deletes the track with the given id
+  deleteTrack: function(id) {
+    return axios.delete("/api/" + id);
   },
-  // Saves a note to the database
-  saveNote: function(noteData) {
-    return axios.post("/api/notes", noteData);
+  // Saves a new track
+  saveTrack: function(trackData) {
+    return axios.post("/api", trackData);
   },
-  saveSignup: function(accountData) {
-    return axios.post('/api/signup', accountData);
+  // Update a track
+  updateTrack: function(id, trackData) {
+    return axios.put("/api/" + id, trackData);
   },
+
+  // Is this needed? Not used at the moment
+  // saveSignup: function(accountData) {
+  //   return axios.post('/api/signup', accountData);
+  // },
   // Sign up a user
   signUp: function(userData) {
     return axios.post('/account', userData);
@@ -29,7 +34,7 @@ export default {
   authenticateUser: function(userData) {
     return axios.post('/login', userData);
   },
-
+  // Get user info
   getUserAccount: function() {
    return axios.get('/account');
  }
