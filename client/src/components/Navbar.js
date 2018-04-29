@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import SignUpForm from './SignUpForm';
-import LogInForm from './LogInForm';
+// import SignUpForm from './SignUpForm';
+// import LogInForm from './LogInForm';
 // import {Navbar, NavItem} from 'react-materialize';
 // import NewNote from './NewNote';
+import LogSignForm from './Modal.js';
+
 const ulStyle= {
   'margin-left': '200px'
 }
@@ -39,11 +41,11 @@ class Navbar extends React.Component {
             <ul className="right">
               <li>
                 {/*<Link to="/login" className="grey-text text-lighten-5">Log In</Link>*/}
-                <LogInForm header="Log In" title="Log In" />
+                <LogSignForm header="Log In" title="Log In" />
               </li>
               <li>
                 {/*<a className="grey-text text-lighten-5" onClick= >Sign Up</a>*/}
-                <SignUpForm header="Sign Up" title="Sign Up" />
+                <LogSignForm header="Sign Up" title="Sign Up" />
               </li>
             </ul>
           )}

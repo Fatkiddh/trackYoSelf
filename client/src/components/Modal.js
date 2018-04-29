@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import {Modal, Button, Row, Input} from 'react-materialize';
 import API from './../utils/API';
 import Auth from './../utils/Auth';
 
 
-class SignUpForm extends Component {
+class LogSignForm extends Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    username: "",
-    email: "",
-    password: "",
-    errorMessage: null,
-  };
+    this.state = {
+      userName: "",
+      email: "",
+      password: "",
+      errorMessage: null,
+      is_registered: false,
+      is_loggedin: false
+    };
+  }
+
 
   authenticate = () => {
-  const userData = {
-    email: this.state.email,
-    password: this.state.password,
-  };
+    const userData = {
+      email: this.state.email,
+      password: this.state.password,
+    };
 
-  API.authenticateUser(userData)
+    API.authenticateUser(userData)
      .then(res => {
        // clear error message
        this.setState({ errorMessage: null });
@@ -34,7 +40,7 @@ class SignUpForm extends Component {
 
  signUp = () => {
     const userData = {
-      username: this.state.username,
+      userName: this.state.userName,
       email: this.state.email,
       password: this.state.password,
     };
@@ -68,7 +74,7 @@ class SignUpForm extends Component {
     //   lastName: "",
     // });
     if (
-     this.state.username &&
+     this.state.userName &&
      // this.state.phoneNumber &&
      this.state.email &&
      this.state.password
@@ -85,9 +91,8 @@ class SignUpForm extends Component {
 
   render() {
     return(
-
-      <Modal header={this.props.header} fixedFooter trigger={<Button><Link to="/signup">{this.props.title}</Link></Button>} actions={<Button onClick={this.handleFormSubmit}>Create Account</Button>}>
-        <form>
+      <Modal header={this.props.header} fixedFooter trigger={<Link to={`${this.props.route}/signup`}><Button>{this.props.title}</Button></Link>}
+      actions={<Button onClick={this.handleFormSubmit}>{this.props.header === "Sign Up" ? "Create Account" : "Log In"}</Button>}>
           <Row>
             <Input s={12} label="Username"
             value={this.state.userName}
@@ -96,11 +101,13 @@ class SignUpForm extends Component {
             type="text"
             />
 
-            <Input type="email" label="Email" s={12}
-            value={this.state.email}
-            name="email"
-            onChange={this.handleInputChange}
-            />
+            {this.props.header==="Sign Up" ? (
+              <Input type="email" label="Email" s={12}
+              value={this.state.email}
+              name="email"
+              onChange={this.handleInputChange}
+              />
+              ) : ""}
 
             <Input type="password" label="Password" s={12}
             value={this.state.password}
@@ -108,7 +115,8 @@ class SignUpForm extends Component {
             onChange={this.handleInputChange}
             />
           </Row>
-        </form>
+          <Route exact path={`${this.props.route}/signup`} component={LogSignForm}/>
+          <Route exact path={`${this.props.route}/login`} component={LogSignForm}/>
       </Modal>
     );
   }
@@ -116,4 +124,4 @@ class SignUpForm extends Component {
 
 
 
-export default SignUpForm;
+export default LogSignForm;
