@@ -26,11 +26,11 @@ const Launch = props =>
     <br/><br/>
     <Row className="container center">
       <Col s={12} m={4} offset="m2">
-        <Icon large="large" className="center">favorite_border</Icon>
+        <Icon large className="center">favorite_border</Icon>
         <p>Keep a track of how you're feeling or record significant events in your life.</p>
       </Col>
       <Col s={12} m={4}>
-        <Icon large="large" className="center">timeline</Icon>
+        <Icon large className="center">timeline</Icon>
         <p>Receive sentiment analysis from your tracks and see how your mood changes.</p>
       </Col>
     </Row>

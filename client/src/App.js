@@ -12,9 +12,8 @@ const App = () =>
   <Router>
     <div>
       <Navbar />
-          <Route path="/" component={Launch} />
+          <Route exact path="/" component={Launch} />
           <Route exact path="/dashboard" component={Dashboard} />
-
           <Route exact path="/new" component={NewTrack} />
     </div>
   </Router>;
