@@ -17,6 +17,9 @@ const trackSchema = new Schema({
     },
     score: {
         type: Number
+    }, 
+    account: {
+        type: Schema.ObjectId, ref: "Account"
     }
 });
 

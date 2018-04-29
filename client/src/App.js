@@ -5,16 +5,18 @@ import Launch from './pages/Launch';
 import Dashboard from './pages/Dashboard';
 import SignUpForm from './components/SignUpForm';
 import LogInForm from './components/LogInForm';
+import NewTrack from './components/NewTrack';
 
 
 const App = () =>
   <Router>
     <div>
       <Navbar />
-          <Route path="/" component={Launch} />
+          <Route exact path="/" component={Launch} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/login" component={LogInForm} />
+          <Route exact path="/new" component={NewTrack} />
     </div>
   </Router>;
 
