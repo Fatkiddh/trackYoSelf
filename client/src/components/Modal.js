@@ -10,7 +10,7 @@ class LogSignForm extends Component {
     super(props);
 
     this.state = {
-      userName: "",
+      username: "",
       email: "",
       password: "",
       errorMessage: null,
@@ -33,14 +33,14 @@ class LogSignForm extends Component {
        Auth.authenticateUser(res.data.token);
 
        // hard redirect to / to reload all the state and nav
-       window.location.href = '/';
+       window.location.href = '/new';
      })
      .catch(err => this.setState({ errorMessage: err.response.data.message }));
  };
 
  signUp = () => {
     const userData = {
-      userName: this.state.userName,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     };
@@ -68,13 +68,13 @@ class LogSignForm extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    // alert(`Hello ${this.state.userName} ${this.state.email}`);
+    // alert(`Hello ${this.state.username} ${this.state.email}`);
     // this.setState({
     //   firstName: "",
     //   lastName: "",
     // });
     if (
-     this.state.userName &&
+     this.state.username &&
      // this.state.phoneNumber &&
      this.state.email &&
      this.state.password
@@ -94,9 +94,9 @@ class LogSignForm extends Component {
       <Modal header={this.props.header} fixedFooter trigger={<Link to={`${this.props.route}/signup`}><Button>{this.props.title}</Button></Link>}
       actions={<Button onClick={this.handleFormSubmit}>{this.props.header === "Sign Up" ? "Create Account" : "Log In"}</Button>}>
           <Row>
-            <Input s={12} label="Username"
-            value={this.state.userName}
-            name="userName"
+            <Input s={12} label="username"
+            value={this.state.username}
+            name="username"
             onChange={this.handleInputChange}
             type="text"
             />
@@ -121,7 +121,5 @@ class LogSignForm extends Component {
     );
   }
 }
-
-
 
 export default LogSignForm;
