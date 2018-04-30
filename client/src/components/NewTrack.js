@@ -30,33 +30,45 @@ class NewTrack extends Component {
       .catch(err => this.setState({ errorMessage: err.response.data.message }));
   };
 
+  handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
   render() {
     return (
       <form>
         <Row>
-          <div className="col s12">
-            <input placeholder="Track Title" id="title" />
-            <input name='on' type='date' onChange={function (e, value) { }} />
-          </div>
+          <Input s={12}
+            label="Title"
+            value={this.state.title}
+            name="title"
+            onChange={this.handleInputChange}
+          />
         </Row>
 
         <Row>
-          <div className="input-field col s12">
-            <textarea id="body" className="materialize-textarea"></textarea>
-            <label type="textarea">"How are you feeling today?"</label>
-          </div>
+          <Input s={12}
+            label="How are you feeling today?"
+            type="textarea"
+            value={this.state.entry}
+            name="entry"
+            onChange={this.handleInputChange}
+          />
         </Row>
 
         <Row>
-          <Input name='group1' type='checkbox' value='red' label='Red' />
-          <Input name='group1' type='checkbox' value='yellow' label='Yellow' defaultValue='checked' />
-          <Input name='group1' type='checkbox' value='green' label='Green' />
-          <Input name='group1' type='checkbox' value='brown' label='Brown' />
+          <Input name='tag' type='checkbox' value='work' label='Work' />
+          <Input name='tag' type='checkbox' value='family' label='Family' defaultValue='checked' />
+          <Input name='tag' type='checkbox' value='school' label='School' />
+          <Input name='tag' type='checkbox' value='fitness' label='Fitness' />
         </Row>
       </form>
     )
   }
-
 }
 
 export default NewTrack;
