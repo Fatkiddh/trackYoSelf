@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Input } from 'react-materialize';
+import { Row, Input, Button } from 'react-materialize';
 import API from './../utils/API';
+import Axios from 'axios';
+require('dotenv').config();
 
 class NewTrack extends Component {
   state = {
@@ -32,10 +34,24 @@ class NewTrack extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value
     });
+  };
+
+  handleBtnClick = event => {
+    event.preventDefault();
+    this.getEmotions();
+  };
+
+  getEmotions = () => {
+    Axios.post(
+      'https://apiv2.indico.io/emotion',
+      JSON.stringify({
+        'api_key': SuperAgent.get(process.env.REACT_APP_EMOTION_API_KEY),
+        'data': this.state.entry
+      })
+    ).then(function (res) { console.log(res) });
   };
 
   render() {
@@ -58,6 +74,14 @@ class NewTrack extends Component {
             name="entry"
             onChange={this.handleInputChange}
           />
+        </Row>
+
+        <Row>
+          <Button
+            onClick={this.handleBtnClick}
+          >
+            Save Track
+          </Button>
         </Row>
 
         <Row>

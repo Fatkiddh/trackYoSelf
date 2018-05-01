@@ -26,7 +26,7 @@ const trackSchema = new Schema({
       fear: Number,
       sadness: Number,
       surprise: Number,
-    }
+    },
     account: {
         type: Schema.ObjectId, ref: "Account"
     }
