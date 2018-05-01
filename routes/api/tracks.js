@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const tracksController = require("../../controllers/tracksController");
+const emotionController = require("../../indico/emotion")
 
 // Matches with "/api/tracks"
 router.route("/")
@@ -12,5 +13,9 @@ router
   .get(tracksController.findById)
   .put(tracksController.update)
   .delete(tracksController.remove);
+
+//emotion API processing route
+router.route('/emotions')
+  .post(emotionController.getEmotions);
 
 module.exports = router;

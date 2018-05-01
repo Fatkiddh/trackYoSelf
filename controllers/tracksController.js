@@ -1,4 +1,5 @@
 const db = require("../models");
+const emotion = require("../../indico/emotion")
 
 module.exports = {
   findAll: function(req, res) {
