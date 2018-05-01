@@ -20,21 +20,13 @@ const trackSchema = new Schema({
         required: true,
         default: Date.now()
     },
-    anger: {
-        type: Number
-    },
-    joy: {
-        type: Number
-    },
-    fear: {
-        type: Number
-    },
-    sadness: {
-        type: Number
-    },
-    surprise: {
-        type: Number
-    },
+    score: {
+      anger: Number,
+      joy: Number,
+      fear: Number,
+      sadness: Number,
+      surprise: Number,
+    }
     account: {
         type: Schema.ObjectId, ref: "Account"
     }

@@ -7,7 +7,7 @@ class NewTrack extends Component {
     title: "",
     entry: "",
     date: "",
-    score: 0,
+    score: {},
     account: "",
     errorMessage: null,
     tags: ["Personal", "Work", "Fitness"]
