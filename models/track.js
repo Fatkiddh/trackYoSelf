@@ -15,18 +15,13 @@ const trackSchema = new Schema({
         type: Date,
         required: true
     },
-    epoch: {
-        type: Number,
-        required: true,
-        default: Date.now()
-    },
     score: {
       anger: Number,
       joy: Number,
       fear: Number,
       sadness: Number,
       surprise: Number,
-    }
+    },
     account: {
         type: Schema.ObjectId, ref: "Account"
     }

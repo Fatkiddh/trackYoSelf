@@ -13,4 +13,8 @@ router
   .put(tracksController.update)
   .delete(tracksController.remove);
 
+//emotion API processing route
+// router.route('/emotions')
+//   .post(emotionController.getEmotions);
+
 module.exports = router;

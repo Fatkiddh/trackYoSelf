@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { Row, Input } from 'react-materialize';
+import { Row, Input, Button } from 'react-materialize';
 import API from './../utils/API';
 
 class NewTrack extends Component {
-  state = {
-    title: "",
-    entry: "",
-    date: "",
-    score: {},
-    account: "",
-    errorMessage: null,
-    tags: ["Personal", "Work", "Fitness"]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      entry: "",
+      date: "",
+      score: {},
+      account: "",
+      errorMessage: null,
+      // tags: ["Personal", "Work", "Fitness"]
+    };
+  }
 
   newTrack = () => {
     const trackData = {
@@ -19,7 +22,7 @@ class NewTrack extends Component {
       entry: this.state.entry,
       date: this.state.date,
       score: this.state.score,
-      account: this.state.account,
+      account: this.state.account
     };
 
     API.saveTrack(trackData)
@@ -32,10 +35,14 @@ class NewTrack extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value
     });
+  };
+
+  handleBtnClick = event => {
+    event.preventDefault();
+    this.newTrack();
   };
 
   render() {
@@ -50,12 +57,20 @@ class NewTrack extends Component {
         </Row>
 
         <Row>
-          <Input name="tag" type="checkbox" value="work" label="Work" />
-          <Input name="tag" type="checkbox" value="family" label="Family" defaultValue="checked" />
-          <Input name="tag" type="checkbox" value="school" label="School" />
-          <Input name="tag" type="checkbox" value="fitness" label="Fitness" />
+          <Input name='tag' type='checkbox' value='work' label='Work' id="1"/>
+          <Input name='tag' type='checkbox' value='family' label='Family' defaultValue='checked' />
+          <Input name='tag' type='checkbox' value='school' label='School' />
+          <Input name='tag' type='checkbox' value='fitness' label='Fitness' />
         </Row>
-      </form>;
+
+        <Row>
+          <Button onClick={this.handleBtnClick}>
+            Save Track
+          </Button>
+        </Row>
+
+      </form>
+    )
   }
 }
 
