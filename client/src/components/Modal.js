@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import {Link, Route} from 'react-router-dom';
-import {Modal, Button, Row, Input} from 'react-materialize';
-import API from './../utils/API';
-import Auth from './../utils/Auth';
-
+import React, { Component } from "react";
+import { Link, Route } from "react-router-dom";
+import { Modal, Button, Row, Input } from "react-materialize";
+import API from "./../utils/API";
+import Auth from "./../utils/Auth";
 
 class LogSignForm extends Component {
   constructor(props) {
@@ -19,37 +18,36 @@ class LogSignForm extends Component {
     };
   }
 
-
   authenticate = () => {
     const userData = {
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
 
     API.authenticateUser(userData)
-     .then(res => {
-       // clear error message
-       this.setState({ errorMessage: null });
-       Auth.authenticateUser(res.data.token);
+      .then(res => {
+        // clear error message
+        this.setState({ errorMessage: null });
+        Auth.authenticateUser(res.data.token);
 
-       // hard redirect to / to reload all the state and nav
-       window.location.href = '/new';
-     })
-     .catch(err => this.setState({ errorMessage: err.response.data.message }));
- };
+        // hard redirect to / to reload all the state and nav
+        window.location.href = "/dashboard";
+      })
+      .catch(err => this.setState({ errorMessage: err.response.data.message }));
+  };
 
- signUp = () => {
+  signUp = () => {
     const userData = {
       username: this.state.username,
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
 
     API.signUp(userData)
       .then(res => {
         // clear error message
         this.setState({ errorMessage: null });
-        console.log('did the signup api hit?');
+        console.log("did the signup api hit?");
 
         // authenticate the user after successful sign up
         this.authenticate();
@@ -58,7 +56,7 @@ class LogSignForm extends Component {
   };
 
   handleInputChange = event => {
-    const { name , value } = event.target;
+    const { name, value } = event.target;
 
     this.setState({
       [name]: value
@@ -74,49 +72,76 @@ class LogSignForm extends Component {
     //   lastName: "",
     // });
     if (
-     this.state.username &&
-     // this.state.phoneNumber &&
-     this.state.email &&
-     this.state.password
-   ) {
-     this.signUp();
-   } else {
-     this.setState({
-       errorMessage: 'Please enter all required fields to sign up.'
-     });
-
+      this.state.username &&
+      // this.state.phoneNumber &&
+      this.state.email &&
+      this.state.password
+    ) {
+      this.signUp();
+    } else {
+      this.setState({
+        errorMessage: "Please enter all required fields to sign up."
+      });
+    }
   };
-};
-
 
   render() {
-    return(
-      <Modal header={this.props.header} fixedFooter trigger={<Link to={`${this.props.route}/signup`}><Button>{this.props.title}</Button></Link>}
-      actions={<Button onClick={this.handleFormSubmit}>{this.props.header === "Sign Up" ? "Create Account" : "Log In"}</Button>}>
-          <Row>
-            <Input s={12} label="username"
+    return (
+      <Modal
+        header={this.props.header}
+        fixedFooter
+        trigger={
+          <Link to={`${this.props.route}/account`}>
+            <Button>{this.props.title}</Button>
+          </Link>
+        }
+        actions={
+          <Button onClick={this.handleFormSubmit}>
+            {this.props.header === "Sign Up" ? "Create Account" : "Log In"}
+          </Button>
+        }>
+        <Row>
+          <Input
+            s={12}
+            label="Username"
             value={this.state.username}
             name="username"
             onChange={this.handleInputChange}
             type="text"
-            />
+          />
 
-            {this.props.header==="Sign Up" ? (
-              <Input type="email" label="Email" s={12}
+          {this.props.header === "Sign Up" ? (
+            <Input
+              type="email"
+              label="Email"
+              s={12}
               value={this.state.email}
               name="email"
               onChange={this.handleInputChange}
-              />
-              ) : ""}
+            />
+          ) : (
+            ""
+          )}
 
-            <Input type="password" label="Password" s={12}
+          <Input
+            type="password"
+            label="Password"
+            s={12}
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
-            />
-          </Row>
-          <Route exact path={`${this.props.route}/signup`} component={LogSignForm}/>
-          <Route exact path={`${this.props.route}/login`} component={LogSignForm}/>
+          />
+        </Row>
+        <Route
+          exact
+          path={`${this.props.route}/account`}
+          component={LogSignForm}
+        />
+        <Route
+          exact
+          path={`${this.props.route}/login`}
+          component={LogSignForm}
+        />
       </Modal>
     );
   }
