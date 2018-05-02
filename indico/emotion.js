@@ -1,20 +1,22 @@
-var axios = require('axios');
-const router = require ('express').Router();
+const axios = require('axios');
 
+module.exports = {
+  function analyzeEmotion(trackData) {
+    let finalPayload = trackData;
 
-var getEmotions = function(trackData){
-    
     axios.post(
-        'https://apiv2.indico.io/emotion',
-        {
-            'api_key': process.env.EMOTION_API_KEY,
-            'data': trackdata.entry
-        }
-    ).then(function (data) { 
-        console.log(data);
-        trackdata.score = data;
-        console.log(trackdata);
-    });
-};
-    
-module.exports = {getEmotions};
+      'https://apiv2.indico.io/emotion',
+      JSON.stringify({
+        'api_key': process.env.INDICO_API_KEY,
+        'data': finalPayload.entry
+      })
+    ).then(function(res) {
+      console.log(res.data.results);
+      finalPayload.score = res.data.results;
+      console.log(finalPayload);
+    })
+    .then() {
+      return finalPayload;
+    }
+  }
+}
