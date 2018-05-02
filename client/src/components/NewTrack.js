@@ -39,35 +39,23 @@ class NewTrack extends Component {
   };
 
   render() {
-    return (
-      <form>
+    return <form className="container" action="#">
         <Row>
-          <Input s={12}
-            label="Title"
-            value={this.state.title}
-            name="title"
-            onChange={this.handleInputChange}
-          />
+          <Input s={12} m={8} label="Title" value={this.state.title} name="title" onChange={this.handleInputChange} />
+          <Input s={12} m={4} name="on" type="date" label="Date" onChange={function(e, value) {}} />
         </Row>
 
         <Row>
-          <Input s={12}
-            label="How are you feeling today?"
-            type="textarea"
-            value={this.state.entry}
-            name="entry"
-            onChange={this.handleInputChange}
-          />
+          <Input s={12} label="How are you feeling today?" type="textarea" value={this.state.entry} name="entry" onChange={this.handleInputChange} />
         </Row>
 
         <Row>
-          <Input name='tag' type='checkbox' value='work' label='Work' />
-          <Input name='tag' type='checkbox' value='family' label='Family' defaultValue='checked' />
-          <Input name='tag' type='checkbox' value='school' label='School' />
-          <Input name='tag' type='checkbox' value='fitness' label='Fitness' />
+          <Input name="tag" type="checkbox" value="work" label="Work" />
+          <Input name="tag" type="checkbox" value="family" label="Family" defaultValue="checked" />
+          <Input name="tag" type="checkbox" value="school" label="School" />
+          <Input name="tag" type="checkbox" value="fitness" label="Fitness" />
         </Row>
-      </form>
-    )
+      </form>;
   }
 }
 
