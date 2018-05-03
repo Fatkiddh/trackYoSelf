@@ -21,8 +21,8 @@ class NewTrack extends Component {
       title: this.state.title,
       entry: this.state.entry,
       date: this.state.date,
-      score: this.state.score,
-      account: this.state.account
+      score: this.state.score
+      // account: this.state.account
     };
 
     API.saveTrack(trackData)
