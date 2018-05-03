@@ -10,7 +10,6 @@ const App = () =>
     <div>
       <Route exact path="/" component={Launch} />
       <Route path="/dashboard" component={Dashboard} />
-      {/* <Route exact path="/new" component={NewTrack} /> */}
     </div>
   </Router>;
 

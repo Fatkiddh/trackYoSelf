@@ -4,6 +4,12 @@ import Navbar from "../components/Navbar";
 import RecentTracks from "../components/RecentTracks";
 import NewTrack from "../components/NewTrack";
 
+
+const trackbtn = {
+  paddingLeft: "30px",
+  marginTop: "10px",
+  fontSize: "30px"
+}
 // 2 chart boxes and recents list
 class Dashboard extends React.Component {
   constructor() {
@@ -15,35 +21,33 @@ class Dashboard extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+
   handleClick() {
     this.setState({
       showNewTrack: !this.state.showNewTrack
     });
   }
   render() {
-    return (
-      <div>
+    return <div>
         <Navbar loggedin="true" />
         <div className="container">
           <Row>
-            <Col>Chart component of last month here.</Col>
-            <Col>Chart component of averages here.</Col>
+            <br />
+            <Col>
+              <img src="http://via.placeholder.com/480x150" alt="this thing" />
+            </Col>
+            <Col>
+              <img src="http://via.placeholder.com/480x150" alt="this thing" />
+            </Col>
           </Row>
           <Row>
-            <Button
-              floating
-              large
-              className="red"
-              waves="light"
-              icon="mode_edit"
-              onClick={this.handleClick}
-            />
+            <Button floating large className="red" waves="light" icon="mode_edit" onClick={this.handleClick} />
+            <span style={trackbtn}>Add Track</span>
             {this.state.showNewTrack ? <NewTrack /> : null}
             <RecentTracks />
           </Row>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 
