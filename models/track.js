@@ -12,15 +12,15 @@ const trackSchema = new Schema({
         required: true
     },
     date: {
-        type: Date,
-        required: true
+        type: Date
+        // required: true
     },
     score: {
       anger: Number,
       joy: Number,
       fear: Number,
       sadness: Number,
-      surprise: Number,
+      surprise: Number
     },
     account: {
         type: Schema.ObjectId, ref: "Account"
