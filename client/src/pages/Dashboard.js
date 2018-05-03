@@ -18,11 +18,10 @@ class Dashboard extends React.Component {
       showNewTrack: false
     };
 
-    this.handleClick = this.handleClick.bind(this);
   }
 
 
-  handleClick() {
+  handleClick = () => {
     this.setState({
       showNewTrack: !this.state.showNewTrack
     });
