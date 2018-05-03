@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Input, Button } from 'react-materialize';
+import { Row, Input, Button, Col } from 'react-materialize';
 import API from './../utils/API';
 let newTags = [];
 
@@ -74,15 +74,19 @@ class NewTrack extends Component {
   };
 
   render() {
-    return <form className="container" action="#">
-      <Row>
-        <Input s={12} m={8} label="Title" value={this.state.title} name="title" onChange={this.handleInputChange} />
-        <Input s={12} m={4} name="date" type="date" label="Date" onChange={this.handleInputChange} />
-      </Row>
+    return <form action="#">
+      <Col s={12} m={10} className="push-m1">
+        <Row>
+          
+          <Input s={12} m={8} label="Title" value={this.state.title} name="title" onChange={this.handleInputChange} />
+          <Input s={12} m={4} name="date" type="date" label="Date" onChange={this.handleInputChange} value={this.state.date} />
+        </Row>
+
 
       <Row>
         <Input s={12} label="How are you feeling today?" type="textarea" value={this.state.entry} name="entry" onChange={this.handleInputChange} />
       </Row>
+
 
       <Row>
         <Input name='tag' type='checkbox' value='work' label='Work' onClick={this.handleCheckboxChange} />
@@ -95,9 +99,9 @@ class NewTrack extends Component {
         <Button onClick={this.handleBtnClick}>
           Save Track
           </Button>
-      </Row>
-
-    </form>;
+        </Row>
+      </Col>
+      </form>;
   }
 }
 
