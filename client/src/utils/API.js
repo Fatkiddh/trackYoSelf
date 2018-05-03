@@ -7,11 +7,11 @@ export default {
   },
   // Gets the track with the given id
   getTrack: function(id) {
-    return axios.get("/api/tracks" + id);
+    return axios.get("/api/tracks/" + id);
   },
   // Deletes the track with the given id
   deleteTrack: function(id) {
-    return axios.delete("/api/tracks" + id);
+    return axios.delete("/api/tracks/" + id);
   },
   // Saves a new track
   saveTrack: function(trackData) {
@@ -19,7 +19,7 @@ export default {
   },
   // Update a track
   updateTrack: function(id, trackData) {
-    return axios.put("/api/tracks" + id, trackData);
+    return axios.put("/api/tracks/" + id, trackData);
   },
 
   // Is this needed? Not used at the moment
