@@ -12,26 +12,19 @@ const trackSchema = new Schema({
         required: true
     },
     date: {
-        type: Date,
-        required: true
+        type: Date
+        // required: true
     },
     score: {
       anger: Number,
       joy: Number,
       fear: Number,
       sadness: Number,
-      surprise: Number,
+      surprise: Number
     },
+    tags: [],
     account: {
         type: Schema.ObjectId, ref: "Account"
-    }
-});
-
-trackSchema.pre('save', function (next) {
-    let track = this;
-    let newDate = new Date();
-    if (!track.date) {
-        track.date = newDate;
     }
 });
 
