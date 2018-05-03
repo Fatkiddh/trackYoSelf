@@ -39,6 +39,7 @@ class NewTrack extends Component {
       score: this.state.score,
       // account: this.state.account,
       tags: this.state.tags
+
     };
 
     API.saveTrack(trackData)
