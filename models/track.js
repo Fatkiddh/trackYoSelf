@@ -22,16 +22,9 @@ const trackSchema = new Schema({
       sadness: Number,
       surprise: Number
     },
+    tags: [],
     account: {
         type: Schema.ObjectId, ref: "Account"
-    }
-});
-
-trackSchema.pre('save', function (next) {
-    let track = this;
-    let newDate = new Date();
-    if (!track.date) {
-        track.date = newDate;
     }
 });
 

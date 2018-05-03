@@ -13,17 +13,17 @@ app.use(bodyParser.json());
 // serve up static assets
 app.use(express.static("client"));
 
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
-// load passport strategies
-const localSignupStrategy= require('./passport/local-signup');
-const localLoginStrategy = require('./passport/local-login');
-passport.use('local-signup', localSignupStrategy);
-passport.use('local-login', localLoginStrategy);
+// // load passport strategies
+// const localSignupStrategy= require('./passport/local-signup');
+// const localLoginStrategy = require('./passport/local-login');
+// passport.use('local-signup', localSignupStrategy);
+// passport.use('local-login', localLoginStrategy);
 
-// pass the authentication checker middleware
-const authCheckMiddleware = require('./middleware/auth-check');
-app.use('/api', authCheckMiddleware);
+// // pass the authentication checker middleware
+// const authCheckMiddleware = require('./middleware/auth-check');
+// app.use('/api', authCheckMiddleware);
 
 // add routes
 app.use(routes);
