@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import RecentTracks from "../components/RecentTracks";
 import NewTrack from "../components/NewTrack";
 
-
 const trackbtn = {
   paddingLeft: "30px",
   marginTop: "10px",
@@ -32,9 +31,6 @@ class Dashboard extends React.Component {
         <div className="container">
           <Row>
             <br />
-            <Col>
-              <img src="http://via.placeholder.com/480x150" alt="this thing" />
-            </Col>
             <Col>
               <img src="http://via.placeholder.com/480x150" alt="this thing" />
             </Col>
