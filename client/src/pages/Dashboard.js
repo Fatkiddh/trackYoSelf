@@ -5,6 +5,7 @@ import RecentTracks from "../components/RecentTracks";
 import NewTrack from "../components/NewTrack";
 
 
+
 const trackbtn = {
   paddingLeft: "30px",
   marginTop: "10px",
@@ -17,25 +18,24 @@ class Dashboard extends React.Component {
     this.state = {
       showNewTrack: false
     };
-
   }
-
 
   handleClick = () => {
     this.setState({
       showNewTrack: !this.state.showNewTrack
     });
-  }
+  };
+
   render() {
     return <div>
         <Navbar loggedin="true" />
         <div className="container">
           <Row>
             <br />
-            <Col>
+            <Col s={12} m={6}>
               <img src="http://via.placeholder.com/480x150" alt="this thing" />
             </Col>
-            <Col>
+            <Col s={12} m={6}>
               <img src="http://via.placeholder.com/480x150" alt="this thing" />
             </Col>
           </Row>

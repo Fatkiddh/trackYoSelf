@@ -1,30 +1,29 @@
 import React from "react";
 import { Modal, Input, Button, Toast } from "react-materialize";
 import API from "./../utils/API";
-
+// import BtnToast from "./BtnToast";
 
 class EditTrack extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       title: this.props.title,
-      entry: this.props.entry,
-      open: this.props.open
+      entry: this.props.entry
     };
   }
-  toast = () => {
-    return <Toast toast="Track has been updated." />
+
+  update = () => {
+    const trackData = this.state;
+
+    API.updateTrack(this.props.id, trackData)
+      .then(res => window.location.reload())
+      .catch(err => console.log("error"));
   }
 
-  handleFormSubmit = () => {
-    this.toast();
-
-    API.updateTrack(this.props.id, this.state)
-      .then(this.setState({open: !this.state.open}))
-      .catch(err =>
-        this.setState({ errorMessage: err.response.data.message })
-      );
-  }
+  handleFormSubmit = event => {
+    // event.preventDefault();
+    this.update();
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -34,16 +33,28 @@ class EditTrack extends React.Component {
   };
 
   render() {
-    return <Modal header="Edit Track" {...this.state.open} fixedFooter trigger={<Button>
-            Edit
-          </Button>} actions={
-            <Button onClick={this.handleFormSubmit} >
-              Submit
-            </Button>
-         }>
-        <Input value={this.state.title} name="title" onChange={this.handleInputChange} />
-        <Input value={this.state.entry} name="entry" type="textarea" onChange={this.handleInputChange} />
-      </Modal>;
+    return (
+      <Modal
+        id={this.state.id}
+        header="Edit Track"
+        fixedFooter
+        trigger={<Button>Edit</Button>}
+        actions={
+          <Toast toast="Track has been updated." ><h6 className="modal-close" onClick={this.handleFormSubmit}>Submit</h6></Toast>
+        }>
+        <Input
+          value={this.state.title}
+          name="title"
+          onChange={this.handleInputChange}
+        />
+        <Input
+          value={this.state.entry}
+          name="entry"
+          type="textarea"
+          onChange={this.handleInputChange}
+        />
+      </Modal>
+    );
   }
 }
 
