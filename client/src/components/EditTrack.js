@@ -21,7 +21,7 @@ class EditTrack extends React.Component {
   }
 
   handleFormSubmit = event => {
-    // event.preventDefault();
+    event.preventDefault();
     this.update();
   };
 
