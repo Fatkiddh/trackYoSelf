@@ -6,31 +6,35 @@ let newTags = [];
 class NewTrack extends Component {
   constructor(props) {
     super(props);
+
+    // define state for NewTrack Component
     this.state = {
       title: "",
       entry: "",
       date: "",
       score: {},
-      account: "",
+      // account: "",
       tags: [],
+      checked: false,
       errorMessage: null
     };
   }
 
+  // function to reset state and global newTags variable after new track is saved to db
   reset = () => {
     this.setState({
       title: "",
       entry: "",
       date: "",
       score: {},
-      account: "",
+      // account: "",
       tags: [],
       errorMessage: null
     });
     newTags = [];
-    
   }
 
+  // function to call API saveTrack method that adds new track to db
   newTrack = () => {
     const trackData = {
       title: this.state.title,
@@ -44,13 +48,14 @@ class NewTrack extends Component {
 
     API.saveTrack(trackData)
       .then(res => {
-        // clear error message
-        // this.setState({ errorMessage: null });
+        // call reset function
         this.reset();
       })
-      .catch(err => this.setState({ errorMessage: err.response.data.message }));
+      //if error, show error message
+      .catch(err => this.setState({ errorMessage: err.response }));
   };
 
+  // function to handle input changes
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -58,50 +63,56 @@ class NewTrack extends Component {
     });
   };
 
+  // function to handle changes to checkboxes
   handleCheckboxChange = event => {
     const { value } = event.target;
- 
-
     newTags.push(value);
     this.setState({
       tags: newTags
     });
   };
 
+  handleCheckClick = () => {
+    this.setState({ checked: !this.state.checked });
+  }
+
+  // function to prevent default then call newTrack function
   handleBtnClick = event => {
     event.preventDefault();
     this.newTrack();
   };
 
+  // component render function
   render() {
     return <form action="#">
       <Col s={12} m={10} className="push-m1">
+        {/* new row for Title and Date */}
         <Row>
-          
           <Input s={12} m={8} label="Title" value={this.state.title} name="title" onChange={this.handleInputChange} />
           <Input s={12} m={4} name="date" type="date" label="Date" onChange={this.handleInputChange} value={this.state.date} />
         </Row>
 
+        {/* new row for text area */}
+        <Row>
+          <Input s={12} label="How are you feeling today?" type="textarea" value={this.state.entry} name="entry" onChange={this.handleInputChange} />
+        </Row>
 
-      <Row>
-        <Input s={12} label="How are you feeling today?" type="textarea" value={this.state.entry} name="entry" onChange={this.handleInputChange} />
-      </Row>
+        {/* new row for checkboxes */}
+        <Row>
+          <Input name='tag' type='checkbox' value='work' label='Work' checked={this.state.checked} onClick={this.handleCheckboxChange} />
+          <Input name='tag' type='checkbox' value='family' label='Family' checked={this.state.checked} onClick={this.handleCheckboxChange} />
+          <Input name='tag' type='checkbox' value='school' label='School' checked={this.state.checked} onClick={this.handleCheckboxChange} />
+          <Input name='tag' type='checkbox' value='fitness' label='Fitness' checked={this.state.checked} onClick={this.handleCheckboxChange} />
+        </Row>
 
-
-      <Row>
-        <Input name='tag' type='checkbox' value='work' label='Work' onClick={this.handleCheckboxChange} />
-        <Input name='tag' type='checkbox' value='family' label='Family' defaultValue='checked' onClick={this.handleCheckboxChange} />
-        <Input name='tag' type='checkbox' value='school' label='School' onClick={this.handleCheckboxChange} />
-        <Input name='tag' type='checkbox' value='fitness' label='Fitness' onClick={this.handleCheckboxChange} />
-      </Row>
-
-      <Row>
-        <Button onClick={this.handleBtnClick}>
-          Save Track
+        {/* new row for submit button */}
+        <Row>
+          <Button onClick={this.handleBtnClick}>
+            Save Track
           </Button>
         </Row>
       </Col>
-      </form>;
+    </form>;
   }
 }
 
