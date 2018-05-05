@@ -3,6 +3,7 @@ import { Row, Col, Button } from "react-materialize";
 import Navbar from "../components/Navbar";
 import RecentTracks from "../components/RecentTracks";
 import NewTrack from "../components/NewTrack";
+import EmotionLineChart from "../components/EmotionLineChart";
 
 
 
@@ -32,11 +33,9 @@ class Dashboard extends React.Component {
         <div className="container">
           <Row>
             <br />
-            <Col s={12} m={6}>
-              <img src="http://via.placeholder.com/480x150" alt="this thing" />
-            </Col>
-            <Col s={12} m={6}>
-              <img src="http://via.placeholder.com/480x150" alt="this thing" />
+            <Col>
+              <h4>Track your tracks over the last 30 days</h4>
+              <EmotionLineChart />
             </Col>
           </Row>
           <Row>
