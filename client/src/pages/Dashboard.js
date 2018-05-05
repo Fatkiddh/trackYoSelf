@@ -6,6 +6,7 @@ import NewTrack from "../components/NewTrack";
 import EmotionLineChart from "../components/EmotionLineChart";
 
 
+
 const trackbtn = {
   paddingLeft: "30px",
   marginTop: "10px",
@@ -18,15 +19,14 @@ class Dashboard extends React.Component {
     this.state = {
       showNewTrack: false
     };
-
   }
-
 
   handleClick = () => {
     this.setState({
       showNewTrack: !this.state.showNewTrack
     });
-  }
+  };
+
   render() {
     return <div>
         <Navbar loggedin="true" />

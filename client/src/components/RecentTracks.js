@@ -3,42 +3,20 @@ import { Collapsible, CollapsibleItem, Row, Col } from "react-materialize";
 import EditTrack from './EditTrack';
 import API from "./../utils/API";
 
-// const tracks = [{
-//   title: "title 1",
-//   entry: "aosidjfaosdijf"
-// }, {
-//   title: "title 2",
-//   entry: "dslkfjsoidfsldkfj sodijfsd oisdjf"
-// }, {
-//   title: "title 3",
-//   entry: "asodiafj sadoifj oaispjf"
-// }, {
-//   title: "title 4",
-//   entry: "sadfio fj sdof osidjf "
-// }];
-
-
 class RecentTrack extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tracks: [],
-      open: false
-    };
+      tracks: []
+    }
   }
 
   componentDidMount() {
     API.getTracks()
-      .then(res => {
-        this.setState({
-          tracks: res.data
-        });
+    .then(res => {
+        this.setState({ tracks: res.data });
       })
       .catch(err => console.log("error"));
-  }
-
-  handleClick = () =>{
-    this.setState({open: !this.state.open})
   }
 
   render() {
@@ -55,7 +33,11 @@ class RecentTrack extends React.Component {
                     <p>{track.entry}</p>
                   </Col>
                   <Col s={12} m={2}>
-                    <EditTrack open={this.state.open} title={track.title} entry={track.entry} id={track._id} onClick={this.handleClick} />
+                    <EditTrack
+                      title={track.title}
+                      entry={track.entry}
+                      id={track._id}
+                    />
                   </Col>
                 </Row>
               </CollapsibleItem>
