@@ -1,7 +1,8 @@
 import React from "react";
-import { Parallax, Footer, Row, Col, Icon } from "react-materialize";
+import { Parallax, Row, Col, Icon } from "react-materialize";
 import LogSignForm from "../components/Modal";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Launch = props => (
   <div>
@@ -63,33 +64,8 @@ const Launch = props => (
       <br />
     </div>
     <Parallax imageSrc={`${window.location.origin}/images/phone.jpeg`} />
-
-    <Footer
-      copyrights="© 2018 Copyright"
-      links={
-        <Row className="grey-text text-lighten-3">
-          <Col className="pull-s12">
-            <ul>
-              <h6>Contributors</h6>
-              <li>Alvin Go</li>
-              <li>Jesse Bustamante</li>
-              <li>Julie Groth</li>
-              <li>Ryan Evans</li>
-            </ul>
-          </Col>
-          <Col>
-            <ul>
-              <li>
-                <a href="https://github.com/Fatkiddh/trackYoSelf">Github</a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      }
-      className="light-blue darken-4">
-      <h5 className="white-text">TrackYoSelf</h5>
-      <p className="grey-text text-lighten-4">Tracking feelz since 2018.</p>
-    </Footer>
+    <Footer />
+    
   </div>
 );
 
