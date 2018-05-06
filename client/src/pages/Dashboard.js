@@ -4,7 +4,8 @@ import Navbar from "../components/Navbar";
 import RecentTracks from "../components/RecentTracks";
 import NewTrack from "../components/NewTrack";
 import EmotionLineChart from "../components/EmotionLineChart";
-
+import DashFooter from "../components/DashFooter";
+import API from "./../utils/API";
 
 const trackbtn = {
   paddingLeft: "30px",
@@ -16,8 +17,17 @@ class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      showNewTrack: false
+      showNewTrack: false,
+      tracks: []
     };
+  }
+
+  componentDidMount() {
+    API.getTracks()
+      .then(res => {
+        this.setState({ tracks: res.data });
+      })
+      .catch(err => console.log("error"));
   }
 
   handleClick = () => {
@@ -32,7 +42,7 @@ class Dashboard extends React.Component {
         <div className="container">
           <Row>
             <br />
-            <Col>
+            <Col s={12} m={10}>
               <h4>Track your tracks over the last 30 days</h4>
               <EmotionLineChart />
             </Col>
@@ -41,9 +51,10 @@ class Dashboard extends React.Component {
             <Button floating large className="red" waves="light" icon="mode_edit" onClick={this.handleClick} />
             <span style={trackbtn}>Add Track</span>
             {this.state.showNewTrack ? <NewTrack /> : null}
-            <RecentTracks />
+            <RecentTracks tracks={this.state.tracks} />
           </Row>
         </div>
+        <DashFooter />
       </div>;
   }
 }
