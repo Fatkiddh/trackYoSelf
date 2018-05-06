@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
 
-const data = [
-{emotion: 1, fill: "red", value: .2},
-{emotion: 2, fill: "green", value: .5},
-{emotion: 3, fill: "gold", value: .3},
-{emotion: 4, fill: "blue", value: .7},
-{emotion: 5, fill: "pink", value: .9}
-];
-
 class BarChart extends Component {
 
     render() {
@@ -24,10 +16,18 @@ class BarChart extends Component {
           />
           <VictoryAxis
             dependentAxis
+            domain={{y: [0, 1]}}
             tickFormat={(x) => (`${x}`)}
           />
           <VictoryBar
-            data={data}
+            style={{ data: { fill: "purple" } }}
+            data={[
+            {emotion: 1, value: this.props.score.anger},
+            {emotion: 2, value: this.props.score.joy},
+            {emotion: 3, value: this.props.score.fear},
+            {emotion: 4, value: this.props.score.sadness},
+            {emotion: 5, value: this.props.score.surprise}
+            ]}
             x="emotion"
             y="value"
           />
