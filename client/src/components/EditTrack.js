@@ -18,7 +18,7 @@ class EditTrack extends React.Component {
     API.updateTrack(this.props.id, trackData)
       .then(res => window.location.reload())
       .catch(err => console.log("error"));
-  }
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -31,7 +31,7 @@ class EditTrack extends React.Component {
       [name]: value
     });
   };
-
+  
   render() {
     return (
       <Modal
@@ -40,7 +40,11 @@ class EditTrack extends React.Component {
         fixedFooter
         trigger={<Button>Edit</Button>}
         actions={
-          <Toast toast="Track has been updated." ><h6 className="modal-close" onClick={this.handleFormSubmit}>Submit</h6></Toast>
+          <Toast toast="Track has been updated.">
+            <h6 className="modal-close" onClick={this.handleFormSubmit}>
+              Submit
+            </h6>
+          </Toast>
         }>
         <Input
           value={this.state.title}
