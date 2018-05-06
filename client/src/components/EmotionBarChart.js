@@ -16,10 +16,11 @@ class BarChart extends Component {
           />
           <VictoryAxis
             dependentAxis
+            domain={{y: [0, 1]}}
             tickFormat={(x) => (`${x}`)}
           />
           <VictoryBar
-            style={{ data: { fill: "teal" } }}
+            style={{ data: { fill: "purple" } }}
             data={[
             {emotion: 1, value: this.props.score.anger},
             {emotion: 2, value: this.props.score.joy},
