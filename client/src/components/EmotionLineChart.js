@@ -30,20 +30,19 @@ class EmotionLineChart extends Component {
     render() {
         return (
             <VictoryChart
+                colorScale={"qualitative"}
                 theme={VictoryTheme.material}
                 height={350}
                 width={800}
-                padding={{ top: 50, bottom: 50, left: 50, right: 50 }}
+                domainPadding={{ top: 50, bottom: 50, left: 50, right: 50 }}
                 scale={{ x: "time"}}
                 // containerComponent={<VictoryContainer responsive={false}/>}
 
             >
-                <VictoryGroup offset={0}
-                    colorScale={"qualitative"}
-                    // need to add labels and make x asix the same
+                <VictoryGroup 
+                offset={0}
+                    // need to add labels and make x axis the same
                     // add scale
-                    // domain={{ y: [0, 2] }}
-                    range={{ x: [0, 30], y: [0, 1] }}
                 >
                     <VictoryLine
                         style={{
