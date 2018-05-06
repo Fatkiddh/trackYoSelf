@@ -27,6 +27,7 @@ class BarChart extends Component {
             tickFormat={(x) => (`${x}`)}
           />
           <VictoryBar
+            style={{ data: { fill: "teal" } }}
             data={data}
             x="emotion"
             y="value"
