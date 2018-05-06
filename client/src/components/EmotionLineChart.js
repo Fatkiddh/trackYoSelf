@@ -32,8 +32,9 @@ class EmotionLineChart extends Component {
             <VictoryChart
                 theme={VictoryTheme.material}
                 height={350}
-                // width={700}
+                width={800}
                 padding={{ top: 50, bottom: 50, left: 50, right: 50 }}
+                scale={{ x: "time"}}
                 // containerComponent={<VictoryContainer responsive={false}/>}
 
             >
@@ -42,6 +43,7 @@ class EmotionLineChart extends Component {
                     // need to add labels and make x asix the same
                     // add scale
                     // domain={{ y: [0, 2] }}
+                    range={{ x: [0, 30], y: [0, 1] }}
                 >
                     <VictoryLine
                         style={{
@@ -49,11 +51,36 @@ class EmotionLineChart extends Component {
                             parent: { border: "1px solid #ccc" }
                         }}
                         data={[
-                            { x: "05-01", y: 0.17 },
-                            { x: "05-02", y: 0.25 },
-                            { x: "05-03", y: 0.24 },
-                            { x: "05-04", y: 0.15 },
-                            { x: "05-05", y: 0.19 }
+                            { x: new Date(2018, 5, 1), y: 0.17 },
+                            { x: new Date(2018, 5, 2), y: 0.25 },
+                            { x: new Date(2018, 5, 3), y: 0.24 },
+                            { x: new Date(2018, 5, 4), y: 0.15 },
+                            { x: new Date(2018, 5, 5), y: 0.19 },
+                            { x: new Date(2018, 5, 6), y: 0.17 },
+                            { x: new Date(2018, 5, 7), y: 0.25 },
+                            { x: new Date(2018, 5, 8), y: 0.24 },
+                            { x: new Date(2018, 5, 9), y: 0.15 },
+                            { x: new Date(2018, 5, 10), y: 0.19 },
+                            { x: new Date(2018, 5, 11), y: 0.17 },
+                            { x: new Date(2018, 5, 12), y: 0.25 },
+                            { x: new Date(2018, 5, 13), y: 0.24 },
+                            { x: new Date(2018, 5, 14), y: 0.15 },
+                            { x: new Date(2018, 5, 15), y: 0.19 },
+                            { x: new Date(2018, 5, 16), y: 0.17 },
+                            { x: new Date(2018, 5, 17), y: 0.25 },
+                            { x: new Date(2018, 5, 18), y: 0.24 },
+                            { x: new Date(2018, 5, 19), y: 0.15 },
+                            { x: new Date(2018, 5, 20), y: 0.19 },
+                            { x: new Date(2018, 5, 21), y: 0.17 },
+                            { x: new Date(2018, 5, 22), y: 0.25 },
+                            { x: new Date(2018, 5, 23), y: 0.24 },
+                            { x: new Date(2018, 5, 24), y: 0.15 },
+                            { x: new Date(2018, 5, 25), y: 0.19 },
+                            { x: new Date(2018, 5, 26), y: 0.17 },
+                            { x: new Date(2018, 5, 27), y: 0.25 },
+                            { x: new Date(2018, 5, 28), y: 0.24 },
+                            { x: new Date(2018, 5, 29), y: 0.15 },
+                            { x: new Date(2018, 5, 30), y: 0.19 }
                         ]}
                     />
 
@@ -63,11 +90,36 @@ class EmotionLineChart extends Component {
                             parent: { border: "1px solid #ccc" }
                         }}
                         data={[
-                            { x: "05-01", y: 0.37 },
-                            { x: "05-02", y: 0.28 },
-                            { x: "05-03", y: 0.14 },
-                            { x: "05-04", y: 0.65 },
-                            { x: "05-05", y: 0.30 }
+                            { x: new Date(2018, 5, 1), y: 0.37 },
+                            { x: new Date(2018, 5, 2), y: 0.28 },
+                            { x: new Date(2018, 5, 3), y: 0.14 },
+                            { x: new Date(2018, 5, 4), y: 0.65 },
+                            { x: new Date(2018, 5, 5), y: 0.30 },
+                            { x: new Date(2018, 5, 6), y: 0.37 },
+                            { x: new Date(2018, 5, 7), y: 0.28 },
+                            { x: new Date(2018, 5, 8), y: 0.14 },
+                            { x: new Date(2018, 5, 9), y: 0.65 },
+                            { x: new Date(2018, 5, 10), y: 0.30 },
+                            { x: new Date(2018, 5, 11), y: 0.37 },
+                            { x: new Date(2018, 5, 12), y: 0.28 },
+                            { x: new Date(2018, 5, 13), y: 0.14 },
+                            { x: new Date(2018, 5, 14), y: 0.65 },
+                            { x: new Date(2018, 5, 15), y: 0.30 },
+                            { x: new Date(2018, 5, 16), y: 0.37 },
+                            { x: new Date(2018, 5, 17), y: 0.28 },
+                            { x: new Date(2018, 5, 18), y: 0.14 },
+                            { x: new Date(2018, 5, 19), y: 0.65 },
+                            { x: new Date(2018, 5, 20), y: 0.30 },
+                            { x: new Date(2018, 5, 21), y: 0.37 },
+                            { x: new Date(2018, 5, 22), y: 0.28 },
+                            { x: new Date(2018, 5, 23), y: 0.14 },
+                            { x: new Date(2018, 5, 24), y: 0.65 },
+                            { x: new Date(2018, 5, 25), y: 0.30 },
+                            { x: new Date(2018, 5, 26), y: 0.37 },
+                            { x: new Date(2018, 5, 27), y: 0.28 },
+                            { x: new Date(2018, 5, 28), y: 0.14 },
+                            { x: new Date(2018, 5, 29), y: 0.65 },
+                            { x: new Date(2018, 5, 30), y: 0.30 }
                         ]}
                     />
                 </VictoryGroup>

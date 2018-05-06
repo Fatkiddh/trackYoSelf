@@ -33,7 +33,6 @@ class Dashboard extends React.Component {
           <Row>
             <br />
             <Col>
-              <img src="http://via.placeholder.com/480x150" alt="this thing" />
               <h4>Track your tracks over the last 30 days</h4>
               <EmotionLineChart />
             </Col>
