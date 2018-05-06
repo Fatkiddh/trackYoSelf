@@ -33,17 +33,7 @@ class RecentTrack extends React.Component {
                 <Row>
                   <Col s={12} m={6}>
                     <p>{track.entry}</p>
-<<<<<<< HEAD
                     <EditTrack open={this.state.open} title={track.title} entry={track.entry} id={track._id} onClick={this.handleClick} />
-=======
-                  </Col>
-                  <Col s={12} m={2}>
-                    <EditTrack
-                      title={track.title}
-                      entry={track.entry}
-                      id={track._id}
-                    />
->>>>>>> master
                   </Col>
                   <Col s={12} m={6}>
                     <BarChart />
