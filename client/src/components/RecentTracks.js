@@ -2,6 +2,8 @@ import React from "react";
 import { Collapsible, CollapsibleItem, Row, Col } from "react-materialize";
 import EditTrack from './EditTrack';
 import API from "./../utils/API";
+import BarChart from "../components/EmotionBarChart";
+
 
 class RecentTrack extends React.Component {
   constructor(props) {
@@ -29,8 +31,11 @@ class RecentTrack extends React.Component {
                 header={track.title}
                 icon="filter_drama">
                 <Row>
-                  <Col s={12} m={10}>
+                  <Col s={12} m={6}>
                     <p>{track.entry}</p>
+<<<<<<< HEAD
+                    <EditTrack open={this.state.open} title={track.title} entry={track.entry} id={track._id} onClick={this.handleClick} />
+=======
                   </Col>
                   <Col s={12} m={2}>
                     <EditTrack
@@ -38,6 +43,10 @@ class RecentTrack extends React.Component {
                       entry={track.entry}
                       id={track._id}
                     />
+>>>>>>> master
+                  </Col>
+                  <Col s={12} m={6}>
+                    <BarChart />
                   </Col>
                 </Row>
               </CollapsibleItem>

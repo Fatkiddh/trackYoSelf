@@ -6,7 +6,6 @@ import NewTrack from "../components/NewTrack";
 import EmotionLineChart from "../components/EmotionLineChart";
 
 
-
 const trackbtn = {
   paddingLeft: "30px",
   marginTop: "10px",
@@ -34,8 +33,12 @@ class Dashboard extends React.Component {
           <Row>
             <br />
             <Col>
+<<<<<<< HEAD
+              <img src="http://via.placeholder.com/480x150" alt="this thing" />
+=======
               <h4>Track your tracks over the last 30 days</h4>
               <EmotionLineChart />
+>>>>>>> master
             </Col>
           </Row>
           <Row>
