@@ -36,7 +36,7 @@ class RecentTrack extends React.Component {
                     <EditTrack open={this.state.open} title={track.title} entry={track.entry} id={track._id} onClick={this.handleClick} />
                   </Col>
                   <Col s={12} m={6}>
-                    <BarChart />
+                    <BarChart score={track.score} />
                   </Col>
                 </Row>
               </CollapsibleItem>
