@@ -55,9 +55,9 @@ class EmotionLineChart extends Component {
               range={{ x: [0, 30], y: [0, 1] }}>
               {this.state.checkAnger ? (
                 <VictoryLine
-                  interpolation="natural"
+                  interpolation="basis"
                   style={{
-                    data: { stroke: "green", strokeWidth: 5 },
+                    data: { stroke: "green", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -97,9 +97,9 @@ class EmotionLineChart extends Component {
 
               {this.state.checkJoy ? (
                 <VictoryLine
-                  interpolation="natural"
+                  interpolation="basis"
                   style={{
-                    data: { stroke: "indigo", strokeWidth: 5 },
+                    data: { stroke: "indigo", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -140,9 +140,9 @@ class EmotionLineChart extends Component {
 
               {this.state.checkFear ? (
                 <VictoryLine
-                  interpolation="natural"
+                  interpolation="basis"
                   style={{
-                    data: { stroke: "orange", strokeWidth: 5 },
+                    data: { stroke: "orange", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -182,9 +182,9 @@ class EmotionLineChart extends Component {
 
               {this.state.checkSadness ? (
                 <VictoryLine
-                  interpolation="natural"
+                  interpolation="basis"
                   style={{
-                    data: { stroke: "teal", strokeWidth: 5 },
+                    data: { stroke: "teal", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -224,9 +224,9 @@ class EmotionLineChart extends Component {
 
               {this.state.checkSurprise ? (
                 <VictoryLine
-                  interpolation="natural"
+                  interpolation="basis"
                   style={{
-                    data: { stroke: "pink", strokeWidth: 5 },
+                    data: { stroke: "pink", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
