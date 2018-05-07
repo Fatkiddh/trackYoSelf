@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import { Modal, Button, Row, Input } from "react-materialize";
 import API from "./../utils/API";
-import Auth from "./../utils/Auth";
+// import Auth from "./../utils/Auth";
 
 class LogSignForm extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class LogSignForm extends Component {
       .then(res => {
         // clear error message
         this.setState({ errorMessage: null });
-        Auth.authenticateUser(res.data.token);
+        // Auth.authenticateUser(res.data.token);
 
         // hard redirect to / to reload all the state and nav
         window.location.href = "/dashboard";
@@ -49,8 +49,6 @@ class LogSignForm extends Component {
         this.setState({ errorMessage: null });
         console.log("did the signup api hit?");
 
-        // authenticate the user after successful sign up
-        this.authenticate();
       })
       .catch(err => this.setState({ errorMessage: err.response.data.message }));
   };
