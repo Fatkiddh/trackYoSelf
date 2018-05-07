@@ -42,14 +42,55 @@ class EmotionLineChart extends Component {
                     colorScale={"qualitative"}
                     // need to add labels and make x asix the same
                     // add scale
-                    // domain={{ y: [0, 2] }}
-                    range={{ x: [0, 30], y: [0, 1] }}
+                    domain={{ y: [0, 1] }}
+                    range={{ x: [0, 30]}}
                 >
 
                     <VictoryLine
-                        interpolation="natural"
+                        interpolation="basis"
                         style={{
-                            data: { stroke: "green", strokeWidth: 5 },
+                            data: { stroke: "green", strokeWidth: 3 },
+                            parent: { border: "1px solid #ccc" }
+                        }}
+
+                        data={[
+                            { x: new Date(2018, 5, 1), y: Math.random() },
+                            { x: new Date(2018, 5, 2), y: Math.random() },
+                            { x: new Date(2018, 5, 3), y: Math.random() },
+                            { x: new Date(2018, 5, 4), y: Math.random() },
+                            { x: new Date(2018, 5, 5), y: Math.random() },
+                            { x: new Date(2018, 5, 6), y: Math.random() },
+                            { x: new Date(2018, 5, 7), y: Math.random() },
+                            { x: new Date(2018, 5, 8), y: Math.random() },
+                            { x: new Date(2018, 5, 9), y: Math.random() },
+                            { x: new Date(2018, 5, 10), y: Math.random() },
+                            { x: new Date(2018, 5, 11), y: Math.random() },
+                            { x: new Date(2018, 5, 12), y: Math.random() },
+                            { x: new Date(2018, 5, 13), y: Math.random() },
+                            { x: new Date(2018, 5, 14), y: Math.random() },
+                            { x: new Date(2018, 5, 15), y: Math.random() },
+                            { x: new Date(2018, 5, 16), y: Math.random() },
+                            { x: new Date(2018, 5, 17), y: Math.random() },
+                            { x: new Date(2018, 5, 18), y: Math.random() },
+                            { x: new Date(2018, 5, 19), y: Math.random() },
+                            { x: new Date(2018, 5, 20), y: Math.random() },
+                            { x: new Date(2018, 5, 21), y: Math.random() },
+                            { x: new Date(2018, 5, 22), y: Math.random() },
+                            { x: new Date(2018, 5, 23), y: Math.random() },
+                            { x: new Date(2018, 5, 24), y: Math.random() },
+                            { x: new Date(2018, 5, 25), y: Math.random() },
+                            { x: new Date(2018, 5, 26), y: Math.random() },
+                            { x: new Date(2018, 5, 27), y: Math.random() },
+                            { x: new Date(2018, 5, 28), y: Math.random() },
+                            { x: new Date(2018, 5, 29), y: Math.random() },
+                            { x: new Date(2018, 5, 30), y: Math.random() }
+                        ]}
+                    />
+
+                    <VictoryLine
+                        interpolation="basis"
+                        style={{
+                            data: { stroke: "indigo", strokeWidth: 3 },
                             parent: { border: "1px solid #ccc" }
                         }}
                         data={[
@@ -87,9 +128,9 @@ class EmotionLineChart extends Component {
                     />
 
                     <VictoryLine
-                        interpolation="natural"
+                        interpolation="basis"
                         style={{
-                            data: { stroke: "indigo", strokeWidth: 5 },
+                            data: { stroke: "orange", strokeWidth: 3 },
                             parent: { border: "1px solid #ccc" }
                         }}
                         data={[
@@ -127,9 +168,9 @@ class EmotionLineChart extends Component {
                     />
 
                     <VictoryLine
-                        interpolation="natural"
+                        interpolation="basis"
                         style={{
-                            data: { stroke: "orange", strokeWidth: 5 },
+                            data: { stroke: "teal", strokeWidth: 3 },
                             parent: { border: "1px solid #ccc" }
                         }}
                         data={[
@@ -167,49 +208,9 @@ class EmotionLineChart extends Component {
                     />
 
                     <VictoryLine
-                        interpolation="natural"
+                        interpolation="basis"
                         style={{
-                            data: { stroke: "teal", strokeWidth: 5 },
-                            parent: { border: "1px solid #ccc" }
-                        }}
-                        data={[
-                            { x: new Date(2018, 5, 1), y: Math.random() },
-                            { x: new Date(2018, 5, 2), y: Math.random() },
-                            { x: new Date(2018, 5, 3), y: Math.random() },
-                            { x: new Date(2018, 5, 4), y: Math.random() },
-                            { x: new Date(2018, 5, 5), y: Math.random() },
-                            { x: new Date(2018, 5, 6), y: Math.random() },
-                            { x: new Date(2018, 5, 7), y: Math.random() },
-                            { x: new Date(2018, 5, 8), y: Math.random() },
-                            { x: new Date(2018, 5, 9), y: Math.random() },
-                            { x: new Date(2018, 5, 10), y: Math.random() },
-                            { x: new Date(2018, 5, 11), y: Math.random() },
-                            { x: new Date(2018, 5, 12), y: Math.random() },
-                            { x: new Date(2018, 5, 13), y: Math.random() },
-                            { x: new Date(2018, 5, 14), y: Math.random() },
-                            { x: new Date(2018, 5, 15), y: Math.random() },
-                            { x: new Date(2018, 5, 16), y: Math.random() },
-                            { x: new Date(2018, 5, 17), y: Math.random() },
-                            { x: new Date(2018, 5, 18), y: Math.random() },
-                            { x: new Date(2018, 5, 19), y: Math.random() },
-                            { x: new Date(2018, 5, 20), y: Math.random() },
-                            { x: new Date(2018, 5, 21), y: Math.random() },
-                            { x: new Date(2018, 5, 22), y: Math.random() },
-                            { x: new Date(2018, 5, 23), y: Math.random() },
-                            { x: new Date(2018, 5, 24), y: Math.random() },
-                            { x: new Date(2018, 5, 25), y: Math.random() },
-                            { x: new Date(2018, 5, 26), y: Math.random() },
-                            { x: new Date(2018, 5, 27), y: Math.random() },
-                            { x: new Date(2018, 5, 28), y: Math.random() },
-                            { x: new Date(2018, 5, 29), y: Math.random() },
-                            { x: new Date(2018, 5, 30), y: Math.random() }
-                        ]}
-                    />
-
-                    <VictoryLine
-                        interpolation="natural"
-                        style={{
-                            data: { stroke: "pink", strokeWidth: 5 },
+                            data: { stroke: "pink", strokeWidth: 3 },
                             parent: { border: "1px solid #ccc" }
                         }}
                         data={[
