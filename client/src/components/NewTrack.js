@@ -50,6 +50,7 @@ class NewTrack extends Component {
       .then(res => {
         // call reset function
         this.reset();
+        window.location.reload();
       })
       //if error, show error message
       .catch(err => this.setState({ errorMessage: err.response }));
