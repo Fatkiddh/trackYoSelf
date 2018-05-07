@@ -20,22 +20,5 @@ export default {
   // Update a track
   updateTrack: function(id, trackData) {
     return axios.put("/api/tracks/" + id, trackData);
-  },
-
-  // Is this needed? Not used at the moment
-  // saveSignup: function(accountData) {
-  //   return axios.post('/api/signup', accountData);
-  // },
-  // Sign up a user
-  signUp: function(userData) {
-    return axios.post('/account', userData);
-  },
-  // Authenticates a user
-  authenticateUser: function(userData) {
-    return axios.post('/login', userData);
-  },
-  // Get user info
-  getUserAccount: function() {
-   return axios.get('/account');
- }
+  }
 };
