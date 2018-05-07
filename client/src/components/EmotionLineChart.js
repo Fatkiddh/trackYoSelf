@@ -50,9 +50,9 @@ class EmotionLineChart extends Component {
               offset={0}
               colorScale={"qualitative"}
               // need to add labels and make x asix the same
-              // add scale
-              // domain={{ y: [0, 2] }}
-              range={{ x: [0, 30], y: [0, 1] }}>
+              domain={{ y: [0, 1] }}
+              range={{ x: [0, 30]}}
+              >
               {this.state.checkAnger ? (
                 <VictoryLine
                   interpolation="basis"
