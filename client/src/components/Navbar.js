@@ -27,7 +27,7 @@ class Navbar extends React.Component {
                   <a to="/account">Account</a>
                 </li>
                 <li>
-                  <a to="/logout">Log Out</a>
+                  <a href='/'>logout</a>
                 </li>
               </ul>
             </ul>
