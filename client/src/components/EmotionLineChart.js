@@ -137,6 +137,7 @@ class EmotionLineChart extends Component {
                 />
               ) : null}
 
+
               {this.state.checkFear ? (
                 <VictoryLine
                   interpolation="natural"
