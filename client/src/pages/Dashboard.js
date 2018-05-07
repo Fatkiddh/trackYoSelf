@@ -42,9 +42,9 @@ class Dashboard extends React.Component {
         <div className="container">
           <Row>
             <br />
-            <Col s={12} m={10}>
+            <Col s={12} m={11}>
               <h4>Track your tracks over the last 30 days</h4>
-              <EmotionLineChart />
+              <EmotionLineChart tracks={this.state.tracks} />
             </Col>
           </Row>
           <Row>
