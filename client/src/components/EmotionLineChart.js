@@ -6,7 +6,7 @@ class EmotionLineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkAnger: true,
+      checkAnger: false,
       checkJoy: false,
       checkFear: true,
       checkSadness: true,
@@ -184,7 +184,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "black", strokeWidth: 2 },
+                    data: { stroke: "#000066", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
