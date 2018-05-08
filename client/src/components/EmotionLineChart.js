@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Row, Col, Input } from "react-materialize";
+import _ from 'lodash';
+// import { Row, Col, Input } from "react-materialize";
 import { VictoryChart, VictoryLine, VictoryTheme, VictoryGroup } from "victory";
+// import moment from 'moment';
 
 class EmotionLineChart extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -10,15 +13,28 @@ class EmotionLineChart extends Component {
       checkJoy: false,
       checkFear: false,
       checkSadness: false,
-      checkSurprise: false
+      checkSurprise: false,
+      data: this.props.tracks
     };
-  }
 
-  //   componentDidMount() {}
+    componentDidUpdate(prevProps, prevState) {
+        if (!_.isEqual(prevProps.tracks, this.props.tracks)) {
+            console.log('hi');
+            this.setState({
+                data: this.props.tracks
+            });
+            console.log("state: ", this.state.data);
+            console.log("props ", this.props.tracks);
+        }
+    }
 
-  //   componentWillUnmount() {
-  //     window.clearInterval(this.setStateInterval);
-  //   }
+    handleInputChange = event => {
+        const { name, checked } = event.target;
+        this.setState({
+            [name]: !checked
+        })
+    };
+
 
   //   getData() {
   //     const num = Math.floor(10 * Math.random() + 5);
