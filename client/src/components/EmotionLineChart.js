@@ -8,9 +8,9 @@ class EmotionLineChart extends Component {
     this.state = {
       checkAnger: false,
       checkJoy: false,
-      checkFear: true,
-      checkSadness: true,
-      checkSurprise: true
+      checkFear: false,
+      checkSadness: false,
+      checkSurprise: false
     };
   }
 
