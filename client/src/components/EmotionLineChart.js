@@ -6,11 +6,11 @@ class EmotionLineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkAnger: true,
-      checkJoy: true,
-      checkFear: true,
-      checkSadness: true,
-      checkSurprise: true
+      checkAnger: false,
+      checkJoy: false,
+      checkFear: false,
+      checkSadness: false,
+      checkSurprise: false
     };
   }
 
@@ -32,6 +32,7 @@ class EmotionLineChart extends Component {
     this.setState({
         [name]: !checked
     })
+    console.log(this.state)
   };
 
   render() {
@@ -53,7 +54,7 @@ class EmotionLineChart extends Component {
               domain={{ y: [0, 1] }}
               range={{ x: [0, 30]}}
               >
-              {this.state.checkAnger ? (
+              {!this.state.checkAnger ? (
                 <VictoryLine
                   interpolation="basis"
                   style={{
@@ -95,7 +96,7 @@ class EmotionLineChart extends Component {
                 />
               ) : null}
 
-              {this.state.checkJoy ? (
+              {!this.state.checkJoy ? (
                 <VictoryLine
                   interpolation="basis"
                   style={{
@@ -137,8 +138,7 @@ class EmotionLineChart extends Component {
                 />
               ) : null}
 
-
-              {this.state.checkFear ? (
+              {!this.state.checkFear ? (
                 <VictoryLine
                   interpolation="basis"
                   style={{
@@ -180,7 +180,7 @@ class EmotionLineChart extends Component {
                 />
               ) : null}
 
-              {this.state.checkSadness ? (
+              {!this.state.checkSadness ? (
                 <VictoryLine
                   interpolation="basis"
                   style={{
@@ -222,7 +222,7 @@ class EmotionLineChart extends Component {
                 />
               ) : null}
 
-              {this.state.checkSurprise ? (
+              {!this.state.checkSurprise ? (
                 <VictoryLine
                   interpolation="basis"
                   style={{
@@ -274,26 +274,26 @@ class EmotionLineChart extends Component {
               value="anger"
               label="Anger"
               className="filled-in"
-              checked={this.state.checkAnger}
-              onClick={this.handleInputChange}
-            />
-            <Input
-              name="checkFear"
-              type="checkbox"
-              value="joy"
-              label="Joy"
-              className="filled-in"
-              checked={this.state.checkFear}
-              onClick={this.handleInputChange}
+              checked={!this.state.checkAnger}
+              onChange={this.handleInputChange}
             />
             <Input
               name="checkJoy"
               type="checkbox"
+              value="joy"
+              label="Joy"
+              className="filled-in"
+              checked={!this.state.checkJoy}
+              onChange={this.handleInputChange}
+            />
+            <Input
+              name="checkFear"
+              type="checkbox"
               value="fear"
               label="Fear"
               className="filled-in"
-              checked={this.state.checkJoy}
-              onClick={this.handleInputChange}
+              checked={!this.state.checkFear}
+              onChange={this.handleInputChange}
             />
             <Input
               name="checkSadness"
@@ -301,8 +301,8 @@ class EmotionLineChart extends Component {
               value="sadness"
               label="Sadness"
               className="filled-in"
-              checked={this.state.checkSadness}
-              onClick={this.handleInputChange}
+              checked={!this.state.checkSadness}
+              onChange={this.handleInputChange}
             />
             <Input
               name="checkSurprise"
@@ -310,8 +310,8 @@ class EmotionLineChart extends Component {
               value="surprise"
               label="Surprise"
               className="filled-in"
-              checked={this.state.checkSurprise}
-              onClick={this.handleInputChange}
+              checked={!this.state.checkSurprise}
+              onChange={this.handleInputChange}
             />
           </form>
         </Col>
