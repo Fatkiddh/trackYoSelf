@@ -2,12 +2,17 @@ import React from "react";
 import { Link, Route } from "react-router-dom";
 import login from "./../pages/login";
 import signup from "./../pages/signup";
+import axios from 'axios'
 
 const ulStyle = {
   marginLeft: "200px"
 };
 
 class Navbar extends React.Component {
+  handleBtnClick = event => {
+    event.preventDefault();
+    axios.post('/accounts/logout');
+  }
   render() {
     return (
       <nav className="light-blue darken-2">
@@ -28,7 +33,8 @@ class Navbar extends React.Component {
                   <Link to="/account">Account</Link>
                 </li>
                 <li>
-                  <a href='/'>Logout</a>
+                  <a onClick={this.handleBtnClick}>Logout</a>
+
                 </li>
               </ul>
             </ul>
