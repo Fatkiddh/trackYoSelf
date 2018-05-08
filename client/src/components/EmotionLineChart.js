@@ -6,11 +6,11 @@ class EmotionLineChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkAnger: false,
+      checkAnger: true,
       checkJoy: false,
-      checkFear: false,
-      checkSadness: false,
-      checkSurprise: false
+      checkFear: true,
+      checkSadness: true,
+      checkSurprise: true
     };
   }
 
@@ -38,7 +38,7 @@ class EmotionLineChart extends Component {
   render() {
     return (
       <Row>
-        <Col s={12} m={11}>
+        <Col s={12} m={11} style={{background: "#ccdee8"}}>
           <VictoryChart
             theme={VictoryTheme.material}
             height={350}
@@ -58,7 +58,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "red", strokeWidth: 3 },
+                    data: { stroke: "red", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -100,7 +100,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "yellow", strokeWidth: 3 },
+                    data: { stroke: "blue", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -142,7 +142,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "lime", strokeWidth: 3 },
+                    data: { stroke: "#ff8000", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -184,7 +184,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "indigo", strokeWidth: 3 },
+                    data: { stroke: "black", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -226,7 +226,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "pink", strokeWidth: 3 },
+                    data: { stroke: "#33cc33", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
