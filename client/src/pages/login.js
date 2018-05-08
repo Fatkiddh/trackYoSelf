@@ -8,7 +8,9 @@ class LoginForm extends Component {
         this.state = {
             username: '',
             password: '',
+            isLoggedIn: false,
             redirectTo: null
+
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -20,6 +22,7 @@ class LoginForm extends Component {
             [event.target.name]: event.target.value
         })
     }
+
 
     handleSubmit(event) {
         event.preventDefault()
@@ -34,14 +37,13 @@ class LoginForm extends Component {
                 console.log('login response: ')
                 console.log(response)
                 if (response.status === 200) {
-                    // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        username: response.data.username
-                    })
                     // update the state to redirect to home
                     this.setState({
-                        redirectTo: '/dashboard'
+                        loggedIn: true,
+                        username: response.data.username,
+
+                        redirectTo: `/dashboard/${response.data.username}`
+
                     })
                 }
             }).catch(error => {
