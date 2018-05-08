@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import _ from 'lodash';
-// import { Row, Col, Input } from "react-materialize";
+import { Row, Col, Input } from "react-materialize";
 import { VictoryChart, VictoryLine, VictoryTheme, VictoryGroup } from "victory";
-// import moment from 'moment';
+import API from "./../utils/API";
 
 class EmotionLineChart extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -14,27 +12,97 @@ class EmotionLineChart extends Component {
       checkFear: false,
       checkSadness: false,
       checkSurprise: false,
-      data: this.props.tracks
+      tracks: [],
+      joyData: [],
+      angerData: [],
+      fearData: [],
+      sadnessData: [],
+      surpriseData: []
     };
+  }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (!_.isEqual(prevProps.tracks, this.props.tracks)) {
-            console.log('hi');
-            this.setState({
-                data: this.props.tracks
-            });
-            console.log("state: ", this.state.data);
-            console.log("props ", this.props.tracks);
-        }
+  populateJoyData = (trackArray) => {
+    let array = [];
+    for (let i = 0; i < trackArray.length; i++) {
+      let obj = {
+        x: i,
+        y: trackArray[i].score.joy
+      }
+      array.push(obj);
     }
+    console.log('array: ' , array);
+    return array;
+  }
 
-    handleInputChange = event => {
-        const { name, checked } = event.target;
-        this.setState({
-            [name]: !checked
-        })
-    };
+  populateAngerData = (trackArray) => {
+    let array = [];
+    for (let i = 0; i < trackArray.length; i++) {
+      let obj = {
+        x: i,
+        y: trackArray[i].score.anger
+      }
+      array.push(obj);
+    }
+    console.log('array: ' , array);
+    return array;
+  }
 
+  populateFearData = (trackArray) => {
+    let array = [];
+    for (let i = 0; i < trackArray.length; i++) {
+      let obj = {
+        x: i,
+        y: trackArray[i].score.fear
+      }
+      array.push(obj);
+    }
+    console.log('array: ' , array);
+    return array;
+  }
+
+  populateSadnessData = (trackArray) => {
+    let array = [];
+    for (let i = 0; i < trackArray.length; i++) {
+      let obj = {
+        x: i,
+        y: trackArray[i].score.sadness
+      }
+      array.push(obj);
+    }
+    console.log('array: ' , array);
+    return array;
+  }
+
+  populateSurpriseData = (trackArray) => {
+    let array = [];
+    for (let i = 0; i < trackArray.length; i++) {
+      let obj = {
+        x: i,
+        y: trackArray[i].score.surprise
+      }
+      array.push(obj);
+    }
+    console.log('array: ' , array);
+    return array;
+  }
+
+  componentDidMount() {
+    API.getTracks()
+      .then(res => {
+        this.setState({ tracks: res.data });
+        console.log("Ths is for the line chart: ", this.state.tracks);
+        this.setState({ joyData: this.populateJoyData(this.state.tracks) });
+        this.setState({ angerData: this.populateAngerData(this.state.tracks) });
+        this.setState({ fearData: this.populateFearData(this.state.tracks) });
+        this.setState({ sadnessData: this.populateSadnessData(this.state.tracks) });
+        this.setState({ surpriseData: this.populateSurpriseData(this.state.tracks) });
+      })
+      .catch(err => console.log("error"));
+  }
+
+  //   componentWillUnmount() {
+  //     window.clearInterval(this.setStateInterval);
+  //   }
 
   //   getData() {
   //     const num = Math.floor(10 * Math.random() + 5);
@@ -47,8 +115,7 @@ class EmotionLineChart extends Component {
     const { name, checked } = event.target;
     this.setState({
         [name]: !checked
-    })
-    console.log(this.state)
+    });
   };
 
   render() {
@@ -60,7 +127,7 @@ class EmotionLineChart extends Component {
             height={350}
             width={800}
             padding={{ top: 50, bottom: 50, left: 50, right: 50 }}
-            scale={{ x: "time" }}
+            scale={{ x: "linear" }}
             // containerComponent={<VictoryContainer responsive={false}/>}
           >
             <VictoryGroup
@@ -77,38 +144,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "red", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={[
-                    { x: new Date(2018, 5, 1), y: Math.random() },
-                    { x: new Date(2018, 5, 2), y: Math.random() },
-                    { x: new Date(2018, 5, 3), y: Math.random() },
-                    { x: new Date(2018, 5, 4), y: Math.random() },
-                    { x: new Date(2018, 5, 5), y: Math.random() },
-                    { x: new Date(2018, 5, 6), y: Math.random() },
-                    { x: new Date(2018, 5, 7), y: Math.random() },
-                    { x: new Date(2018, 5, 8), y: Math.random() },
-                    { x: new Date(2018, 5, 9), y: Math.random() },
-                    { x: new Date(2018, 5, 10), y: Math.random() },
-                    { x: new Date(2018, 5, 11), y: Math.random() },
-                    { x: new Date(2018, 5, 12), y: Math.random() },
-                    { x: new Date(2018, 5, 13), y: Math.random() },
-                    { x: new Date(2018, 5, 14), y: Math.random() },
-                    { x: new Date(2018, 5, 15), y: Math.random() },
-                    { x: new Date(2018, 5, 16), y: Math.random() },
-                    { x: new Date(2018, 5, 17), y: Math.random() },
-                    { x: new Date(2018, 5, 18), y: Math.random() },
-                    { x: new Date(2018, 5, 19), y: Math.random() },
-                    { x: new Date(2018, 5, 20), y: Math.random() },
-                    { x: new Date(2018, 5, 21), y: Math.random() },
-                    { x: new Date(2018, 5, 22), y: Math.random() },
-                    { x: new Date(2018, 5, 23), y: Math.random() },
-                    { x: new Date(2018, 5, 24), y: Math.random() },
-                    { x: new Date(2018, 5, 25), y: Math.random() },
-                    { x: new Date(2018, 5, 26), y: Math.random() },
-                    { x: new Date(2018, 5, 27), y: Math.random() },
-                    { x: new Date(2018, 5, 28), y: Math.random() },
-                    { x: new Date(2018, 5, 29), y: Math.random() },
-                    { x: new Date(2018, 5, 30), y: Math.random() }
-                  ]}
+                  data={ this.state.angerData }
                 />
               ) : null}
 
@@ -119,38 +155,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#00ace6", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={[
-                    { x: new Date(2018, 5, 1), y: Math.random() },
-                    { x: new Date(2018, 5, 2), y: Math.random() },
-                    { x: new Date(2018, 5, 3), y: Math.random() },
-                    { x: new Date(2018, 5, 4), y: Math.random() },
-                    { x: new Date(2018, 5, 5), y: Math.random() },
-                    { x: new Date(2018, 5, 6), y: Math.random() },
-                    { x: new Date(2018, 5, 7), y: Math.random() },
-                    { x: new Date(2018, 5, 8), y: Math.random() },
-                    { x: new Date(2018, 5, 9), y: Math.random() },
-                    { x: new Date(2018, 5, 10), y: Math.random() },
-                    { x: new Date(2018, 5, 11), y: Math.random() },
-                    { x: new Date(2018, 5, 12), y: Math.random() },
-                    { x: new Date(2018, 5, 13), y: Math.random() },
-                    { x: new Date(2018, 5, 14), y: Math.random() },
-                    { x: new Date(2018, 5, 15), y: Math.random() },
-                    { x: new Date(2018, 5, 16), y: Math.random() },
-                    { x: new Date(2018, 5, 17), y: Math.random() },
-                    { x: new Date(2018, 5, 18), y: Math.random() },
-                    { x: new Date(2018, 5, 19), y: Math.random() },
-                    { x: new Date(2018, 5, 20), y: Math.random() },
-                    { x: new Date(2018, 5, 21), y: Math.random() },
-                    { x: new Date(2018, 5, 22), y: Math.random() },
-                    { x: new Date(2018, 5, 23), y: Math.random() },
-                    { x: new Date(2018, 5, 24), y: Math.random() },
-                    { x: new Date(2018, 5, 25), y: Math.random() },
-                    { x: new Date(2018, 5, 26), y: Math.random() },
-                    { x: new Date(2018, 5, 27), y: Math.random() },
-                    { x: new Date(2018, 5, 28), y: Math.random() },
-                    { x: new Date(2018, 5, 29), y: Math.random() },
-                    { x: new Date(2018, 5, 30), y: Math.random() }
-                  ]}
+                  data={ this.state.joyData }
                 />
               ) : null}
 
@@ -161,38 +166,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#ff8000", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={[
-                    { x: new Date(2018, 5, 1), y: Math.random() },
-                    { x: new Date(2018, 5, 2), y: Math.random() },
-                    { x: new Date(2018, 5, 3), y: Math.random() },
-                    { x: new Date(2018, 5, 4), y: Math.random() },
-                    { x: new Date(2018, 5, 5), y: Math.random() },
-                    { x: new Date(2018, 5, 6), y: Math.random() },
-                    { x: new Date(2018, 5, 7), y: Math.random() },
-                    { x: new Date(2018, 5, 8), y: Math.random() },
-                    { x: new Date(2018, 5, 9), y: Math.random() },
-                    { x: new Date(2018, 5, 10), y: Math.random() },
-                    { x: new Date(2018, 5, 11), y: Math.random() },
-                    { x: new Date(2018, 5, 12), y: Math.random() },
-                    { x: new Date(2018, 5, 13), y: Math.random() },
-                    { x: new Date(2018, 5, 14), y: Math.random() },
-                    { x: new Date(2018, 5, 15), y: Math.random() },
-                    { x: new Date(2018, 5, 16), y: Math.random() },
-                    { x: new Date(2018, 5, 17), y: Math.random() },
-                    { x: new Date(2018, 5, 18), y: Math.random() },
-                    { x: new Date(2018, 5, 19), y: Math.random() },
-                    { x: new Date(2018, 5, 20), y: Math.random() },
-                    { x: new Date(2018, 5, 21), y: Math.random() },
-                    { x: new Date(2018, 5, 22), y: Math.random() },
-                    { x: new Date(2018, 5, 23), y: Math.random() },
-                    { x: new Date(2018, 5, 24), y: Math.random() },
-                    { x: new Date(2018, 5, 25), y: Math.random() },
-                    { x: new Date(2018, 5, 26), y: Math.random() },
-                    { x: new Date(2018, 5, 27), y: Math.random() },
-                    { x: new Date(2018, 5, 28), y: Math.random() },
-                    { x: new Date(2018, 5, 29), y: Math.random() },
-                    { x: new Date(2018, 5, 30), y: Math.random() }
-                  ]}
+                  data={ this.state.fearData }
                 />
               ) : null}
 
@@ -203,38 +177,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#000066", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={[
-                    { x: new Date(2018, 5, 1), y: Math.random() },
-                    { x: new Date(2018, 5, 2), y: Math.random() },
-                    { x: new Date(2018, 5, 3), y: Math.random() },
-                    { x: new Date(2018, 5, 4), y: Math.random() },
-                    { x: new Date(2018, 5, 5), y: Math.random() },
-                    { x: new Date(2018, 5, 6), y: Math.random() },
-                    { x: new Date(2018, 5, 7), y: Math.random() },
-                    { x: new Date(2018, 5, 8), y: Math.random() },
-                    { x: new Date(2018, 5, 9), y: Math.random() },
-                    { x: new Date(2018, 5, 10), y: Math.random() },
-                    { x: new Date(2018, 5, 11), y: Math.random() },
-                    { x: new Date(2018, 5, 12), y: Math.random() },
-                    { x: new Date(2018, 5, 13), y: Math.random() },
-                    { x: new Date(2018, 5, 14), y: Math.random() },
-                    { x: new Date(2018, 5, 15), y: Math.random() },
-                    { x: new Date(2018, 5, 16), y: Math.random() },
-                    { x: new Date(2018, 5, 17), y: Math.random() },
-                    { x: new Date(2018, 5, 18), y: Math.random() },
-                    { x: new Date(2018, 5, 19), y: Math.random() },
-                    { x: new Date(2018, 5, 20), y: Math.random() },
-                    { x: new Date(2018, 5, 21), y: Math.random() },
-                    { x: new Date(2018, 5, 22), y: Math.random() },
-                    { x: new Date(2018, 5, 23), y: Math.random() },
-                    { x: new Date(2018, 5, 24), y: Math.random() },
-                    { x: new Date(2018, 5, 25), y: Math.random() },
-                    { x: new Date(2018, 5, 26), y: Math.random() },
-                    { x: new Date(2018, 5, 27), y: Math.random() },
-                    { x: new Date(2018, 5, 28), y: Math.random() },
-                    { x: new Date(2018, 5, 29), y: Math.random() },
-                    { x: new Date(2018, 5, 30), y: Math.random() }
-                  ]}
+                  data={ this.state.sadnessData }
                 />
               ) : null}
 
@@ -245,38 +188,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#33cc33", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={[
-                    { x: new Date(2018, 5, 1), y: Math.random() },
-                    { x: new Date(2018, 5, 2), y: Math.random() },
-                    { x: new Date(2018, 5, 3), y: Math.random() },
-                    { x: new Date(2018, 5, 4), y: Math.random() },
-                    { x: new Date(2018, 5, 5), y: Math.random() },
-                    { x: new Date(2018, 5, 6), y: Math.random() },
-                    { x: new Date(2018, 5, 7), y: Math.random() },
-                    { x: new Date(2018, 5, 8), y: Math.random() },
-                    { x: new Date(2018, 5, 9), y: Math.random() },
-                    { x: new Date(2018, 5, 10), y: Math.random() },
-                    { x: new Date(2018, 5, 11), y: Math.random() },
-                    { x: new Date(2018, 5, 12), y: Math.random() },
-                    { x: new Date(2018, 5, 13), y: Math.random() },
-                    { x: new Date(2018, 5, 14), y: Math.random() },
-                    { x: new Date(2018, 5, 15), y: Math.random() },
-                    { x: new Date(2018, 5, 16), y: Math.random() },
-                    { x: new Date(2018, 5, 17), y: Math.random() },
-                    { x: new Date(2018, 5, 18), y: Math.random() },
-                    { x: new Date(2018, 5, 19), y: Math.random() },
-                    { x: new Date(2018, 5, 20), y: Math.random() },
-                    { x: new Date(2018, 5, 21), y: Math.random() },
-                    { x: new Date(2018, 5, 22), y: Math.random() },
-                    { x: new Date(2018, 5, 23), y: Math.random() },
-                    { x: new Date(2018, 5, 24), y: Math.random() },
-                    { x: new Date(2018, 5, 25), y: Math.random() },
-                    { x: new Date(2018, 5, 26), y: Math.random() },
-                    { x: new Date(2018, 5, 27), y: Math.random() },
-                    { x: new Date(2018, 5, 28), y: Math.random() },
-                    { x: new Date(2018, 5, 29), y: Math.random() },
-                    { x: new Date(2018, 5, 30), y: Math.random() }
-                  ]}
+                  data={ this.state.surpriseData }
                 />
               ) : null}
             </VictoryGroup>
