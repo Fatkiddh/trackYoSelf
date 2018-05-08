@@ -38,7 +38,7 @@ class EmotionLineChart extends Component {
   render() {
     return (
       <Row>
-        <Col s={12} m={11} style={{background: "#ccdee8"}}>
+        <Col s={12} m={11} style={{background: "#e6f2ff"}}>
           <VictoryChart
             theme={VictoryTheme.material}
             height={350}
@@ -100,7 +100,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "blue", strokeWidth: 2 },
+                    data: { stroke: "#00ace6", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
