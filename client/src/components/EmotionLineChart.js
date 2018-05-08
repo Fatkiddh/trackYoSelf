@@ -58,7 +58,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "green", strokeWidth: 3 },
+                    data: { stroke: "red", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -100,7 +100,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "indigo", strokeWidth: 3 },
+                    data: { stroke: "yellow", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -142,7 +142,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "orange", strokeWidth: 3 },
+                    data: { stroke: "lime", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
@@ -184,7 +184,7 @@ class EmotionLineChart extends Component {
                 <VictoryLine
                   interpolation="basis"
                   style={{
-                    data: { stroke: "teal", strokeWidth: 3 },
+                    data: { stroke: "indigo", strokeWidth: 3 },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={[
