@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button } from "react-materialize";
+import { Row, Col } from "react-materialize";
 import Navbar from "../components/Navbar";
 import RecentTracks from "../components/RecentTracks";
 import NewTrack from "../components/NewTrack";
@@ -7,11 +7,7 @@ import EmotionLineChart from "../components/EmotionLineChart";
 import DashFooter from "../components/DashFooter";
 import API from "./../utils/API";
 
-const trackbtn = {
-  paddingLeft: "30px",
-  marginTop: "10px",
-  fontSize: "30px"
-}
+
 // 2 chart boxes and recents list
 class Dashboard extends React.Component {
   constructor() {
@@ -23,6 +19,9 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+
+    console.log(this.props.match.params.id);
+
     API.getTracks()
       .then(res => {
         this.setState({ tracks: res.data });
@@ -30,11 +29,7 @@ class Dashboard extends React.Component {
       .catch(err => console.log("error"));
   }
 
-  handleClick = () => {
-    this.setState({
-      showNewTrack: !this.state.showNewTrack
-    });
-  };
+  
 
   render() {
     return <div>
@@ -49,9 +44,7 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Button floating large className="red" waves="light" icon="mode_edit" onClick={this.handleClick} />
-            <span style={trackbtn}>Add Track</span>
-            {this.state.showNewTrack ? <NewTrack /> : null}
+          <NewTrack id={this.props.match.params.id}/>
             <RecentTracks tracks={this.state.tracks} />
           </Row>
         </div>

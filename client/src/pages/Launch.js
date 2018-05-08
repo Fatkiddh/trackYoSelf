@@ -1,8 +1,9 @@
 import React from "react";
-import { Parallax, Row, Col, Icon } from "react-materialize";
-import LogSignForm from "../components/Modal";
+import { Parallax, Row, Col, Icon, Button } from "react-materialize";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Link, Route } from "react-router-dom";
+import signup from "./signup";
 
 const Launch = props => (
   <div>
@@ -19,11 +20,12 @@ const Launch = props => (
             </h5>
           </Row>
           <Row className="center">
-            <LogSignForm
+            {/* <LogSignForm
               header="Sign Up"
               title="Get Started"
               route={props.match.url}
-            />
+            /> */}
+            <Link to="/signup"><Button>Get Started</Button></Link>
           </Row>
           <br />
           <br />
@@ -65,7 +67,7 @@ const Launch = props => (
     </div>
     <Parallax imageSrc={`${window.location.origin}/images/phone.jpeg`} />
     <Footer />
-    
+    <Route path="/signup" component={signup} />
   </div>
 );
 
