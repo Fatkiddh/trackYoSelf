@@ -23,9 +23,9 @@ const trackSchema = new Schema({
       surprise: Number
     },
     tags: [],
-    account: {
-        type: Schema.ObjectId, ref: "Account"
-    }
+    // account: {
+    //     type: Schema.ObjectId, ref: "Account"
+    // }
 });
 
 const Track = mongoose.model("Track", trackSchema);
