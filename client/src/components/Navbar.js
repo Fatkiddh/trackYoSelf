@@ -1,12 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LogSignForm from "./Modal.js";
+import axios from 'axios'
 
 const ulStyle = {
   marginLeft: "200px"
 };
 
 class Navbar extends React.Component {
+  handleBtnClick = event => {
+    event.preventDefault();
+    axios.post('/accounts/logout');
+  }
   render() {
     return (
       <nav className="light-blue darken-2">
@@ -27,7 +32,7 @@ class Navbar extends React.Component {
                   <a to="/account">Account</a>
                 </li>
                 <li>
-                  <a href='/'>logout</a>
+                  <a onClick={this.handleBtnClick}>Logout</a>
                 </li>
               </ul>
             </ul>

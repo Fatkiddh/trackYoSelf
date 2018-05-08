@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.match.params.id);
     API.getTracks()
       .then(res => {
         this.setState({ tracks: res.data });
