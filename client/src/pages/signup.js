@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios'
 
 class Signup extends Component {
@@ -48,7 +48,8 @@ class Signup extends Component {
 
 render() {
 	return (
-		<div className="SignupForm">
+		<div className="SignupForm container">
+			<br /><br />
 			<h4>Sign up</h4>
 			<form className="form-horizontal">
 				<div className="form-group">

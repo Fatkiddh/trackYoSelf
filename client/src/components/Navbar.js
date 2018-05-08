@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import LogSignForm from "./Modal.js";
+import { Link, Route } from "react-router-dom";
+import login from "./../pages/login";
+import signup from "./../pages/signup";
 import axios from 'axios'
 
 const ulStyle = {
@@ -29,24 +30,27 @@ class Navbar extends React.Component {
               </li>
               <ul className="right">
                 <li>
-                  <a to="/account">Account</a>
+                  <Link to="/account">Account</Link>
                 </li>
                 <li>
                   <a onClick={this.handleBtnClick}>Logout</a>
+
                 </li>
               </ul>
             </ul>
           ) : (
             <ul className="right">
               <li>
-                <LogSignForm header="Log In" title="Log In" />
+                <Link to="/login">Log In</Link>
               </li>
               <li>
-                <LogSignForm header="Sign Up" title="Sign Up" />
+                <Link to="/signup">Sign Up</Link>
               </li>
             </ul>
           )}
         </div>
+        <Route path="/login" component={login} />
+        <Route path="/signup" component={signup} />
       </nav>
     );
   }
