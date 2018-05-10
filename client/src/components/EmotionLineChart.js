@@ -30,7 +30,6 @@ class EmotionLineChart extends Component {
       }
       array.push(obj);
     }
-    console.log('array: ' , array);
     return array;
   }
 
@@ -43,7 +42,6 @@ class EmotionLineChart extends Component {
       }
       array.push(obj);
     }
-    console.log('array: ' , array);
     return array;
   }
 
@@ -56,7 +54,6 @@ class EmotionLineChart extends Component {
       }
       array.push(obj);
     }
-    console.log('array: ' , array);
     return array;
   }
 
@@ -69,7 +66,6 @@ class EmotionLineChart extends Component {
       }
       array.push(obj);
     }
-    console.log('array: ' , array);
     return array;
   }
 
@@ -82,7 +78,6 @@ class EmotionLineChart extends Component {
       }
       array.push(obj);
     }
-    console.log('array: ' , array);
     return array;
   }
 
@@ -90,7 +85,6 @@ class EmotionLineChart extends Component {
     API.getTracks()
       .then(res => {
         this.setState({ tracks: res.data });
-        console.log("Ths is for the line chart: ", this.state.tracks);
         this.setState({ joyData: this.populateJoyData(this.state.tracks) });
         this.setState({ angerData: this.populateAngerData(this.state.tracks) });
         this.setState({ fearData: this.populateFearData(this.state.tracks) });
@@ -100,17 +94,6 @@ class EmotionLineChart extends Component {
       .catch(err => console.log("error"));
   }
 
-  //   componentWillUnmount() {
-  //     window.clearInterval(this.setStateInterval);
-  //   }
-
-  //   getData() {
-  //     const num = Math.floor(10 * Math.random() + 5);
-  //     const points = new Array(num).fill(1);
-  //     return points.map((point, index) => {
-  //       return { x: index + 1, y: Math.random() };
-  //     });
-  //   }
   handleInputChange = event => {
     const { name, checked } = event.target;
     this.setState({
