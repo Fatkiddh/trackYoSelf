@@ -18,6 +18,8 @@ app.use(
 )
 app.use(bodyParser.json())
 
+app.use(express.static('client/build'));
+
 // Sessions
 app.use(
 	session({
