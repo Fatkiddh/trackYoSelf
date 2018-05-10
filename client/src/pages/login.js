@@ -48,8 +48,9 @@ class LoginForm extends Component {
                 console.log('login error: ')
                 console.log(error);
             });
-          }
-          
+
+          }; 
+
   render() {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
@@ -109,6 +110,5 @@ class LoginForm extends Component {
     }
   }
 }
-
 
 export default LoginForm;

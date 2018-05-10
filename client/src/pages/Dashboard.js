@@ -14,7 +14,8 @@ class Dashboard extends React.Component {
     super();
     this.state = {
       showNewTrack: false,
-      tracks: []
+      tracks: [],
+      isLoggedIn: false
     };
   }
 
@@ -29,7 +30,7 @@ class Dashboard extends React.Component {
       .catch(err => console.log("error"));
   }
 
-  
+
 
   render() {
     return <div>
@@ -39,8 +40,7 @@ class Dashboard extends React.Component {
             <br />
             <Col s={12} m={11}>
               <h4>Track your tracks over the last 30 days</h4>
-              <EmotionLineChart 
-              tracks={this.state.tracks}/>
+              <EmotionLineChart />
             </Col>
           </Row>
           <Row>
@@ -52,5 +52,6 @@ class Dashboard extends React.Component {
       </div>;
   }
 }
+
 
 export default Dashboard;
