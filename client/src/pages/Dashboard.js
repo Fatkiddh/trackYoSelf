@@ -14,7 +14,8 @@ class Dashboard extends React.Component {
     super();
     this.state = {
       showNewTrack: false,
-      tracks: []
+      tracks: [],
+      isLoggedIn: false
     };
   }
 
@@ -51,5 +52,6 @@ class Dashboard extends React.Component {
       </div>;
   }
 }
+
 
 export default Dashboard;

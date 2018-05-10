@@ -11,9 +11,9 @@ const App = () =>
   <Router>
     <div>
       <Route exact path="/" component={Launch} />
-      <Route path="/dashboard/:id" component={Dashboard} />
-      <Route path="/login" component={login} />
-      <Route path="/signup" component={Signup} />
+      <Route exact path="/dashboard/:id" component={Dashboard} />
+      <Route exact path="/login" component={login} />
+      <Route exact path="/signup" component={Signup} />
 
     </div>
   </Router>;
