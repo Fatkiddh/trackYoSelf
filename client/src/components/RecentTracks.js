@@ -11,7 +11,7 @@ const RecentTrack = props => (
           <CollapsibleItem
             key={track._id}
             header={track.title}
-            icon="filter_drama">
+            icon="arrow_drop_down_circle">
             <Row>
               <Col s={12} m={7}>
                 <p>{track.entry}</p>
@@ -34,6 +34,6 @@ const RecentTrack = props => (
       </Collapsible>
     </Col>
   </Row>
-)
+);
 
 export default RecentTrack;

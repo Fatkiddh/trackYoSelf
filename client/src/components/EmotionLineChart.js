@@ -21,70 +21,70 @@ class EmotionLineChart extends Component {
     };
   }
 
-  populateJoyData = (trackArray) => {
+  populateJoyData = trackArray => {
     let array = [];
     for (let i = 0; i < trackArray.length; i++) {
       let obj = {
         x: i,
         y: trackArray[i].score.joy
-      }
+      };
       array.push(obj);
     }
-    console.log('array: ' , array);
+    console.log("array: ", array);
     return array;
-  }
+  };
 
-  populateAngerData = (trackArray) => {
+  populateAngerData = trackArray => {
     let array = [];
     for (let i = 0; i < trackArray.length; i++) {
       let obj = {
         x: i,
         y: trackArray[i].score.anger
-      }
+      };
       array.push(obj);
     }
-    console.log('array: ' , array);
+    console.log("array: ", array);
     return array;
-  }
+  };
 
-  populateFearData = (trackArray) => {
+  populateFearData = trackArray => {
     let array = [];
     for (let i = 0; i < trackArray.length; i++) {
       let obj = {
         x: i,
         y: trackArray[i].score.fear
-      }
+      };
       array.push(obj);
     }
-    console.log('array: ' , array);
+    console.log("array: ", array);
     return array;
-  }
+  };
 
-  populateSadnessData = (trackArray) => {
+  populateSadnessData = trackArray => {
     let array = [];
     for (let i = 0; i < trackArray.length; i++) {
       let obj = {
         x: i,
         y: trackArray[i].score.sadness
-      }
+      };
       array.push(obj);
     }
-    console.log('array: ' , array);
+    console.log("array: ", array);
     return array;
-  }
+  };
 
-  populateSurpriseData = (trackArray) => {
+  populateSurpriseData = trackArray => {
     let array = [];
     for (let i = 0; i < trackArray.length; i++) {
       let obj = {
         x: i,
         y: trackArray[i].score.surprise
-      }
+      };
       array.push(obj);
     }
-    console.log('array: ' , array);
+    console.log("array: ", array);
     return array;
-  }
+  };
 
   componentDidMount() {
     API.getTracks()
@@ -94,8 +94,12 @@ class EmotionLineChart extends Component {
         this.setState({ joyData: this.populateJoyData(this.state.tracks) });
         this.setState({ angerData: this.populateAngerData(this.state.tracks) });
         this.setState({ fearData: this.populateFearData(this.state.tracks) });
-        this.setState({ sadnessData: this.populateSadnessData(this.state.tracks) });
-        this.setState({ surpriseData: this.populateSurpriseData(this.state.tracks) });
+        this.setState({
+          sadnessData: this.populateSadnessData(this.state.tracks)
+        });
+        this.setState({
+          surpriseData: this.populateSurpriseData(this.state.tracks)
+        });
       })
       .catch(err => console.log("error"));
   }
@@ -114,29 +118,28 @@ class EmotionLineChart extends Component {
   handleInputChange = event => {
     const { name, checked } = event.target;
     this.setState({
-        [name]: !checked
+      [name]: !checked
     });
   };
 
   render() {
     return (
       <Row>
-        <Col s={12} m={11} style={{background: "#e6f2ff"}}>
+        <Col s={12} m={11} style={{ background: "#e6f2ff" }}>
           <VictoryChart
             theme={VictoryTheme.material}
             height={350}
             width={800}
             padding={{ top: 50, bottom: 50, left: 50, right: 50 }}
-            scale={{ x: "linear" }}
-            // containerComponent={<VictoryContainer responsive={false}/>}
-          >
+            scale={{ x: "linear" }}>
+            {/* // containerComponent={<VictoryContainer responsive={false} />} */}
             <VictoryGroup
               offset={0}
               colorScale={"qualitative"}
-              // need to add labels and make x asix the same
-              domain={{ y: [0, 1] }}
-              range={{ x: [0, 30]}}
-              >
+              domain={
+                { y: [0, 1] } // need to add labels and make x asix the same
+              }
+              range={{ x: [0, 30] }}>
               {!this.state.checkAnger ? (
                 <VictoryLine
                   interpolation="basis"
@@ -144,7 +147,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "red", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={ this.state.angerData }
+                  data={this.state.angerData}
                 />
               ) : null}
 
@@ -155,7 +158,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#00ace6", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={ this.state.joyData }
+                  data={this.state.joyData}
                 />
               ) : null}
 
@@ -166,7 +169,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#ff8000", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={ this.state.fearData }
+                  data={this.state.fearData}
                 />
               ) : null}
 
@@ -177,7 +180,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#000066", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={ this.state.sadnessData }
+                  data={this.state.sadnessData}
                 />
               ) : null}
 
@@ -188,7 +191,7 @@ class EmotionLineChart extends Component {
                     data: { stroke: "#33cc33", strokeWidth: 2 },
                     parent: { border: "1px solid #ccc" }
                   }}
-                  data={ this.state.surpriseData }
+                  data={this.state.surpriseData}
                 />
               ) : null}
             </VictoryGroup>
@@ -200,8 +203,8 @@ class EmotionLineChart extends Component {
               name="checkAnger"
               type="checkbox"
               value="anger"
-              label="Anger"
-              className="filled-in"
+              label={<span style={{ color: "#ff0000" }}>Anger</span>}
+              className="filled-in red"
               checked={!this.state.checkAnger}
               onChange={this.handleInputChange}
             />
@@ -209,7 +212,7 @@ class EmotionLineChart extends Component {
               name="checkJoy"
               type="checkbox"
               value="joy"
-              label="Joy"
+              label={<span style={{ color: "#00ace6" }}>Joy</span>}
               className="filled-in"
               checked={!this.state.checkJoy}
               onChange={this.handleInputChange}
@@ -218,7 +221,7 @@ class EmotionLineChart extends Component {
               name="checkFear"
               type="checkbox"
               value="fear"
-              label="Fear"
+              label={<span style={{ color: "#ff8000" }}>Fear</span>}
               className="filled-in"
               checked={!this.state.checkFear}
               onChange={this.handleInputChange}
@@ -227,7 +230,7 @@ class EmotionLineChart extends Component {
               name="checkSadness"
               type="checkbox"
               value="sadness"
-              label="Sadness"
+              label={<span style={{ color: "#000066" }}>Sadness</span>}
               className="filled-in"
               checked={!this.state.checkSadness}
               onChange={this.handleInputChange}
@@ -236,8 +239,9 @@ class EmotionLineChart extends Component {
               name="checkSurprise"
               type="checkbox"
               value="surprise"
-              label="Surprise"
+              label={<span style={{ color: "#33cc33"}}>Surprise</span>}
               className="filled-in"
+              style={{ color: "#33cc33" }}
               checked={!this.state.checkSurprise}
               onChange={this.handleInputChange}
             />
