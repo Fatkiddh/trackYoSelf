@@ -3,26 +3,27 @@ import { Redirect } from "react-router-dom";
 import axios from 'axios'
 
 class Signup extends Component {
-	constructor() {
-		super()
-		this.state = {
-			username: '',
-			password: '',
-			confirmPassword: '',
-			redirectTo: null
-		}
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleChange = this.handleChange.bind(this)
-	}
-	handleChange(event) {
-		this.setState({
-			[event.target.name]: event.target.value
-		})
-	}
-	handleSubmit(event) {
-		console.log('sign-up handleSubmit, username: ')
-		console.log(this.state.username)
-		event.preventDefault()
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      password: "",
+      confirmPassword: "",
+      redirectTo: null
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+  handleSubmit(event) {
+    console.log("sign-up handleSubmit, username: ");
+    console.log(this.state.username);
+    event.preventDefault();
+
 
 		//request to server to add a new username/password
 		axios.post('/accounts/', {
@@ -101,4 +102,4 @@ render() {
 	}
 }
 
-export default Signup
+export default Signup;

@@ -42,13 +42,13 @@ class LoginForm extends Component {
                         loggedIn: true,
                         username: response.data.username,
                         redirectTo: `/dashboard/${response.data.username}`
-
                     })
                 }
             }).catch(error => {
                 console.log('login error: ')
                 console.log(error);
             });
+
           }; 
 
   render() {
