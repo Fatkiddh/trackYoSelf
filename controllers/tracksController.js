@@ -35,7 +35,6 @@ module.exports = {
         .create(completeMongooseObj)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
-      // console.log(completeMongooseObj);
     });
   },
   update: function (req, res) {
