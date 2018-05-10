@@ -14,7 +14,8 @@ class Dashboard extends React.Component {
     super();
     this.state = {
       showNewTrack: false,
-      tracks: []
+      tracks: [],
+      isLoggedIn: false
     };
   }
 
@@ -29,28 +30,29 @@ class Dashboard extends React.Component {
       .catch(err => console.log("error"));
   }
 
-  
+
 
   render() {
-    return <div>
-        <Navbar loggedin="true" />
-        <div className="container">
-          <Row>
-            <br />
-            <Col s={12} m={11}>
-              <h4>Track your tracks over the last 30 days</h4>
-              <EmotionLineChart 
-              tracks={this.state.tracks}/>
-            </Col>
-          </Row>
-          <Row>
-          <NewTrack id={this.props.match.params.id}/>
-            <RecentTracks tracks={this.state.tracks} />
-          </Row>
-        </div>
-        <DashFooter />
-      </div>;
+      return <div>
+          <Navbar loggedin="true" />
+          <div className="container">
+            <Row>
+              <br />
+              <Col s={12} m={11}>
+                <h4>Track your tracks over the last 30 days</h4>
+                <EmotionLineChart
+                tracks={this.state.tracks}/>
+              </Col>
+            </Row>
+            <Row>
+            <NewTrack id={this.props.match.params.id}/>
+              <RecentTracks tracks={this.state.tracks} />
+            </Row>
+          </div>
+          <DashFooter />
+        </div>;
+    }
   }
-}
+
 
 export default Dashboard;
