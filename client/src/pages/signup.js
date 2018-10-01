@@ -3,26 +3,26 @@ import { Redirect } from "react-router-dom";
 import axios from 'axios'
 
 class Signup extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: "",
-      password: "",
-      confirmPassword: "",
-      redirectTo: null
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-  handleSubmit(event) {
-    console.log("sign-up handleSubmit, username: ");
-    console.log(this.state.username);
-    event.preventDefault();
+	constructor() {
+		super();
+		this.state = {
+			username: "",
+			password: "",
+			confirmPassword: "",
+			redirectTo: null
+		};
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+	}
+	handleChange(event) {
+		this.setState({
+			[event.target.name]: event.target.value
+		});
+	}
+	handleSubmit(event) {
+		console.log("sign-up handleSubmit, username: ");
+		console.log(this.state.username);
+		event.preventDefault();
 
 
 		//request to server to add a new username/password
@@ -48,14 +48,17 @@ class Signup extends Component {
 	}
 
 
-render() {
-			if (this.state.redirectTo) {
-				return <Redirect to={{ pathname: this.state.redirectTo }} />;
-			} else {
+	render() {
+		if (this.state.redirectTo) {
+			return <Redirect to={{ pathname: this.state.redirectTo }} />;
+		} else {
 			return (
 				<div className="SignupForm container">
 					<br /><br />
-					<h4>Sign up</h4>
+					<div>
+						<h4>Sign up</h4>
+						<p>Please note, this app is maintained for demonstration purposes only. Upon sign up then log-in, you will be taken to the main feature page where you can test out the app and view posts from other individuals.</p>
+					</div>
 					<form className="form-horizontal">
 						<div className="form-group">
 							<div className="col-1 col-ml-auto">
